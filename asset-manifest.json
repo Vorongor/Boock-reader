@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/Boock-reader/static/css/main.7acaea2f.css",
-    "main.js": "/Boock-reader/static/js/main.07d3183d.js",
+    "main.css": "/Boock-reader/static/css/main.90266b23.css",
+    "main.js": "/Boock-reader/static/js/main.0bf54523.js",
+    "static/media/heroBack.jpg": "/Boock-reader/static/media/heroBack.570b83eb329904acff5e.jpg",
     "index.html": "/Boock-reader/index.html",
-    "main.7acaea2f.css.map": "/Boock-reader/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/Boock-reader/static/js/main.07d3183d.js.map"
+    "main.90266b23.css.map": "/Boock-reader/static/css/main.90266b23.css.map",
+    "main.0bf54523.js.map": "/Boock-reader/static/js/main.0bf54523.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.90266b23.css",
+    "static/js/main.0bf54523.js"
   ]
 }
