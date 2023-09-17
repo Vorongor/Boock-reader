@@ -90,20 +90,16 @@
 }
 
 @media screen and (min-width: 321px) and (max-width: 767px) {
-  /* Your CSS styles for screen widths between 321px and 767px go here */
   .container {
     width: 100%;
-    background-color: wheat;
   }
-
-  /* Add more styles for other elements as needed */
 }
 @media screen and (min-width: 768px) {
   .container {
     width: 100%;
     padding-bottom: 88px;
   }
-  /* asdasdasdasdasda */
+
   .section {
     display: flex;
     width: 100%;
@@ -200,14 +196,20 @@
   .btnGrup {
     display: none;
   }
-  /* asdasdasdasdasdasd */
 }
 
 @media screen and (min-width: 1280px) {
-  /* Your CSS styles for screen widths between 321px and 767px go here */
   .container {
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
-    background-color: orange;
+    padding-bottom: 0;
   }
-  /* Add more styles for other elements as needed */
+  .section {
+    width: 549px;
+    height: 790px;
+  }
+  .texBox {
+    padding-left: 100px;
+  }
 }

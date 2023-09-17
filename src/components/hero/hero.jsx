@@ -62,7 +62,7 @@ function Hero() {
                 Register
               </button>
               <p className={style.changeText}>
-                Already have an account?{' '}
+                Already have an account?
                 <span className={style.logText}>Log in</span>
               </p>
             </div>
