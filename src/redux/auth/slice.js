@@ -12,10 +12,11 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
-  error: null, // Add error field to handle errors
+  error: null,
+  userExist: false,
 };
 
-const handlePending = (state) => {
+const handlePending = state => {
   state.isRefreshing = true;
   state.error = null; // Reset error on pending
 };
@@ -28,8 +29,15 @@ const handleRejected = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
+  reducers: {
+    setLogIn: state => {
+      state.userExist = true;
+    },
+    setRegIn: state => {
+      state.userExist = false;
+    },
+  },
+  extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -47,7 +55,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(logIn.rejected, handleRejected)
-      .addCase(logOut.fulfilled, (state) => {
+      .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
@@ -71,5 +79,5 @@ const authSlice = createSlice({
       });
   },
 });
-
+export const { setLogIn, setRegIn } = authSlice.actions;
 export const authReducer = authSlice.reducer;

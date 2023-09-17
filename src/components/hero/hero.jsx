@@ -1,72 +1,20 @@
 import React from 'react';
 import style from './hero.module.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Header from 'layuot/Header';
+import RegForm from 'components/regForm/regForm';
+import LogForm from 'components/logForm/logForm';
+import { useSelector } from 'react-redux';
 
 function Hero() {
+  const userExist = useSelector(state => state.auth.userExist);
+
   return (
     <div className={style.container}>
       <Header />
       <section className={style.section}>
         <div className={style.tableBox}>
-          <form className={style.form} action="submit">
-            <button type="button" className={style.googleBtn}>
-              Google
-            </button>
-            <label className={style.lable} htmlFor="regName">
-              <p>
-                Name<span className={style.star}> *</span>
-              </p>
-              <input
-                className={style.input}
-                type="text"
-                id="regName"
-                placeholder="..."
-              />
-            </label>
-            <label className={style.lable} htmlFor="regEmail">
-              <p>
-                Email<span className={style.star}> *</span>
-              </p>
-              <input
-                className={style.input}
-                type="text"
-                id="regEmail"
-                placeholder="your@email.com"
-              />
-            </label>
-            <label className={style.lable} htmlFor="regPass">
-              <p>
-                Password<span className={style.star}> *</span>
-              </p>
-              <input
-                className={style.input}
-                type="text"
-                id="regPass"
-                placeholder="..."
-              />
-            </label>
-            <label className={style.lable} htmlFor="regPass2">
-              <p>
-                Confirm Password<span className={style.star}> *</span>
-              </p>
-              <input
-                className={style.input}
-                type="text"
-                id="regPass2"
-                placeholder="..."
-              />
-            </label>
-            <div className={style.botGrup}>
-              <button className={style.regBtn} type="submit">
-                Register
-              </button>
-              <p className={style.changeText}>
-                Already have an account?
-                <span className={style.logText}>Log in</span>
-              </p>
-            </div>
-          </form>
+          {userExist ? <LogForm /> : <RegForm />}
         </div>
       </section>
       <div className={style.texBox}>
