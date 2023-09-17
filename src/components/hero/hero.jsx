@@ -4,11 +4,20 @@ import style from './hero.module.css';
 import Header from 'layuot/Header';
 import RegForm from 'components/regForm/regForm';
 import LogForm from 'components/logForm/logForm';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { setLogIn, setRegIn } from 'redux/auth/slice';
 
 function Hero() {
+  const dispatch = useDispatch();
   const userExist = useSelector(state => state.auth.userExist);
 
+  function goToLog() {
+    dispatch(setLogIn());
+  }
+  function goToReg() {
+    dispatch(setRegIn());
+  }
   return (
     <div className={style.container}>
       <Header />
@@ -45,12 +54,16 @@ function Hero() {
         </div>
       </div>
       <div className={style.btnGrup}>
-        <button type="button" className={style.btnL}>
-          Log in
-        </button>
-        <button type="button" className={style.btnR}>
-          Register
-        </button>
+        <Link to="mobile">
+          <button type="button" className={style.btnL} onClick={goToLog}>
+            Log in
+          </button>
+        </Link>
+        <Link to="mobile">
+          <button type="button" className={style.btnR} onClick={goToReg}>
+            Register
+          </button>
+        </Link>
       </div>
     </div>
   );

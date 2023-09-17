@@ -43,7 +43,7 @@ function LogForm() {
 
       <div className={style.botGrup}>
         <button className={style.regBtn} type="submit">
-          Register
+          Log In
         </button>
 
         <button type="button" onClick={handleGoToReg} className={style.logText}>
