@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@500&family=Roboto:wght@700&display=swap');
+
+:root {
+  --deep-blue: #242a37;
+  --grey: #898f9f;
+}
+
+.container {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section {
+  display: none;
+}
+.texBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  color: var(--deep-blue);
+  margin: 0;
+  padding: 32px 0;
+  font-family: Abril Fatface;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
+}
+.listBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.listTitle {
+  padding-left: 25px;
+  color: var(--deep-blue);
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 38px;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.item {
+  color: var(--grey);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-bottom: 12px;
+  padding-left: 25px;
+}
+.btnGrup {
+  padding: 60px 20px 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.btnL,
+.btnR {
+  box-sizing: border-box;
+  width: 130px;
+  height: 40px;
+  border: 1px solid #000;
+  color: var(--deep-blue);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 38px;
+}
+.btnR {
+  background: #ff6b08;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+@media screen and (min-width: 321px) and (max-width: 767px) {
+  /* Your CSS styles for screen widths between 321px and 767px go here */
+  .container {
+    width: 100%;
+    background-color: wheat;
+  }
+
+  /* Add more styles for other elements as needed */
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 100%;
+    background-color: green;
+  }
+  /* asdasdasdasdasda */
+  .section {
+    display: flex;
+    width: 100%;
+    background-color: white;
+  }
+  .tableBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 797px;
+    background-image: linear-gradient(
+        0deg,
+        rgba(9, 30, 63, 0.8),
+        rgba(9, 30, 63, 0.8)
+      ),
+      url('../../img/heroBack.jpg');
+  }
+  .form {
+    width: 400px;
+    height: 609px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 20px; */
+  }
+  .googleBtn {
+    margin-top: 40px;
+    width: 150px;
+    height: 40px;
+    background: #f5f7fa;
+    box-shadow: 0px 2px 2px 0px rgba(9, 30, 63, 0.15);
+    color: #707375;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 38px;
+  }
+  .lable {
+    display: flex;
+    flex-direction: column;
+    /* gap: 8px; */
+    color: #898f9f;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .star {
+    color: red;
+  }
+  .input {
+    box-sizing: border-box;
+    padding: 2px 12px;
+    font-size: 14px;
+    width: 320px;
+    height: 42px;
+    background: #f5f7fa;
+    box-shadow: 0px 1px 2px 0px rgba(29, 29, 27, 0.15) inset;
+  }
+  .botGrup {
+    padding-top: 15px;
+    text-align: center;
+  }
+  .regBtn {
+    width: 320px;
+    height: 60px;
+    background: #ff6b08;
+    color: #fff;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .changeText {
+    color: #898f9f;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .logText {
+    color: #ff6b08;
+  }
+  /* asdasdasdasdasdasd */
+}
+
+@media screen and (min-width: 1280px) {
+  /* Your CSS styles for screen widths between 321px and 767px go here */
+  .container {
+    width: 100%;
+    background-color: orange;
+  }
+  /* Add more styles for other elements as needed */
+}

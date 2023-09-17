@@ -1,16 +1,15 @@
-export const App = () => {
+import React, { lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import Home from 'pages/home';
+
+function App() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Suspense fallback={<div>LOADING...</div>}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Suspense>
   );
-};
+}
+export default App;
