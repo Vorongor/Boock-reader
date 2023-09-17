@@ -10,7 +10,15 @@ function MobileAuth() {
   return (
     <div>
       <Header />
-      <div>{userExist ? <LogForm /> : <RegForm />}</div>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {userExist ? <LogForm /> : <RegForm />}
+      </div>
       {userExist && <Quote />}
     </div>
   );
