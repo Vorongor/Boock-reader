@@ -92,7 +92,7 @@ p {
     width: 400px;
     height: 430px;
     background-color: #fff;
-
+    background-image: none;
     padding-bottom: 40px;
     /* gap: 20px; */
   }
