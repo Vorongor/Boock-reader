@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLogIn } from 'redux/auth/slice';
 
 function RegForm() {
+  const googleSvg = require('../../img/googleIcon.png');
   const dispatch = useDispatch();
   const userExist = useSelector(state => state.auth.userExist);
 
@@ -15,6 +16,7 @@ function RegForm() {
   return (
     <form className={style.form} action="submit">
       <button type="button" className={style.googleBtn}>
+        <img src={googleSvg} alt="google item" className={style.icon} />
         Google
       </button>
       <label className={style.lable} htmlFor="regName">

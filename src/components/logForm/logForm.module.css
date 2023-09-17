@@ -30,7 +30,13 @@ p {
   font-weight: 600;
   line-height: normal;
 }
+.icon {
+  padding-right: 6px;
+}
 .googleBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 32px;
   width: 150px;
   height: 40px;
