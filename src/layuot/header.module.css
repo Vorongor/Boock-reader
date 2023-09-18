@@ -9,6 +9,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 58px;
 }
 .link {
   color: #242a37;
@@ -18,6 +19,45 @@
   font-weight: 400;
   line-height: normal;
   text-decoration: none;
+}
+.userBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #f5f7fa;
+  color: #242a37;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.breake {
+  display: block;
+  width: 1px;
+  height: 33px;
+  background: #e0e5eb;
+}
+.logout {
+  border: none;
+  background-color: transparent;
+  color: #242a37;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-decoration-line: underline;
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   /* Your CSS styles for screen widths between 321px and 767px go here */

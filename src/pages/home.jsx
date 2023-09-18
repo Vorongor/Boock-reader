@@ -1,15 +1,18 @@
 import Intro from 'components/Intro/Intro';
-import LibraryBlock from 'components/LibraryBlock/LibraryBlock';
+import TrainingBlock from 'components/TrainingBlock/TrainingBlock';
+import Header from 'layuot/Header';
+// import LibraryBlock from 'components/LibraryBlock/LibraryBlock';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 function Home() {
   const userAuthDone = useSelector(state => state.auth.isLoggedIn);
   return (
     <div>
       {userAuthDone ? (
         <div>
-          <Link to="library">Liba</Link>
+          <Header />
+          <TrainingBlock />
         </div>
       ) : (
         <Intro />

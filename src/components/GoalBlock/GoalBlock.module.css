@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.goal {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 280px;
+  height: 60px;
+  background: #b1b5c2;
+  box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  margin: 0;
+  padding: 18px;
+}
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 280px;
+  height: 236px;
+  background: #fff;
+  box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
+}
+.tumb {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.count {
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 31px;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+  background: #f5f7fa;
+  box-shadow: 4px 4px 8px 0px rgba(36, 42, 55, 0.15);
+  color: #091e3f;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 38px;
+}
+.text {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 72px;
+  color: #898f9f;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

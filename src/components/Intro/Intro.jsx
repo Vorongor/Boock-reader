@@ -36,7 +36,7 @@ function Intro() {
             Log in
           </button>
         </Link>
-        <Link to="mobile">
+        <Link to="/mobile">
           <button type="button" className={style.btnR} onClick={goToReg}>
             Register
           </button>

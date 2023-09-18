@@ -31,9 +31,6 @@
   background-color: #fff;
   box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
 }
-.boockText {
-  color: #242a37;
-}
 .tumb {
   display: flex;
   flex-direction: column;
