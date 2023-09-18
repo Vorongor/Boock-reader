@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@500&family=Roboto:wght@700&display=swap');
+
+.bookList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #f6f7fb;
+  padding-bottom: 139px;
+}
+.title {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding-left: 20px;
+  color: #242a37;
+  font-family: Montserrat;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.card {
+  display: flex;
+  padding: 20px;
+  gap: 12px;
+  width: 280px;
+  height: 178px;
+  background-color: #fff;
+  box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
+}
+.boockText {
+  color: #242a37;
+}
+.tumb {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 256px;
+}
+.boockText {
+  color: #242a37;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.tip {
+  display: inline-block;
+  width: 80px;
+  margin: 0;
+  color: #898f9f;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.start {
+  box-sizing: border-box;
+  width: 171px;
+  height: 42px;
+  background: #ff6b08;
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.add {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+  border: none;
+}

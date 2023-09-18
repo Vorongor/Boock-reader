@@ -36,6 +36,13 @@ const authSlice = createSlice({
     setRegIn: state => {
       state.userExist = false;
     },
+    setTestIn: state => {
+      state.isLoggedIn = true;
+    },
+    setLogOut: state => {
+      state.isLoggedIn = false;
+      state.userExist = false;
+    },
   },
   extraReducers: builder => {
     builder
@@ -79,5 +86,5 @@ const authSlice = createSlice({
       });
   },
 });
-export const { setLogIn, setRegIn } = authSlice.actions;
+export const { setLogIn, setRegIn, setTestIn, setLogOut } = authSlice.actions;
 export const authReducer = authSlice.reducer;

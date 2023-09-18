@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Home from 'pages/home';
 import MobileAuth from 'pages/mobile';
+import Library from 'pages/library';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="mobile" element={<MobileAuth />} />
+        <Route path="library" element={<Library />} />
       </Routes>
     </Suspense>
   );

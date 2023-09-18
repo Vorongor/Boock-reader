@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@500;600&family=Roboto:wght@700&display=swap');
 .quote {
-    position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,4 +45,23 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+@media screen and (min-width: 768px) {
+  .text {
+    padding-top: 126px;
+  }
+  .top {
+    top: 106px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .quote {
+    padding-left: 167px;
+  }
+  .text {
+    padding-top: 0;
+  }
+  .top {
+    top: 0;
+  }
 }

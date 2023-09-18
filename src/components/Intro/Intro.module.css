@@ -14,54 +14,7 @@
 .section {
   display: none;
 }
-.texBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-.title {
-  display: block;
-  width: 100%;
-  text-align: center;
-  color: var(--deep-blue);
-  margin: 0;
-  padding: 32px 0;
-  font-family: Abril Fatface;
-  font-size: 34px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 38px;
-}
-.listBox {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.listTitle {
-  padding-left: 25px;
-  color: var(--deep-blue);
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 38px;
-}
-.list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.item {
-  color: var(--grey);
-  font-family: Montserrat;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding-bottom: 12px;
-  padding-left: 25px;
-}
+
 .btnGrup {
   padding: 60px 20px 40px 20px;
   display: flex;
@@ -133,8 +86,5 @@
   .section {
     width: 549px;
     height: 790px;
-  }
-  .texBox {
-    padding-left: 100px;
   }
 }

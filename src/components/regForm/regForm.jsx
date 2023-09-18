@@ -1,20 +1,22 @@
 import React from 'react';
 import style from './regForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLogIn } from 'redux/auth/slice';
+import { setLogIn, setTestIn } from 'redux/auth/slice';
 
 function RegForm() {
   const googleSvg = require('../../img/googleIcon.png');
   const dispatch = useDispatch();
-  const userExist = useSelector(state => state.auth.userExist);
 
   function handleGoToLog() {
     dispatch(setLogIn());
-    console.log('🚀 ~ file: regForm.jsx:8 ~ RegForm ~ userExist:', userExist);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(setTestIn());
   }
 
   return (
-    <form className={style.form} action="submit">
+    <form className={style.form} action="submit" onSubmit={handleSubmit}>
       <button type="button" className={style.googleBtn}>
         <img src={googleSvg} alt="google item" className={style.icon} />
         Google
