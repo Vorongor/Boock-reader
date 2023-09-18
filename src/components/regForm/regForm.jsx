@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './regForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLogIn, setTestIn } from 'redux/auth/slice';
 
 function RegForm() {
