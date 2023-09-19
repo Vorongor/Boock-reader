@@ -10,7 +10,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 
 ChartJS.register(
   CategoryScale,
@@ -39,8 +38,6 @@ export const options = {
     },
   },
 };
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 export const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

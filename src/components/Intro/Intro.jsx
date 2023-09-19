@@ -1,7 +1,5 @@
 import React from 'react';
 import style from './Intro.module.css';
-// import { Link } from 'react-router-dom';
-import Header from 'layuot/Header';
 import RegForm from 'components/regForm/regForm';
 import LogForm from 'components/logForm/logForm';
 import { useDispatch, useSelector } from 'react-redux';
