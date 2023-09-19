@@ -18,7 +18,7 @@ const initialState = {
 
 const handlePending = state => {
   state.isRefreshing = true;
-  state.error = null; // Reset error on pending
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {
