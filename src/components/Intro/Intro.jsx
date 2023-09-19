@@ -22,7 +22,6 @@ function Intro() {
   }
   return (
     <div className={style.container}>
-      <Header />
       <section className={style.section}>
         <div className={style.tableBox}>
           {userExist ? <LogForm /> : <RegForm />}

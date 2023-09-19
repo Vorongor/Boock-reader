@@ -43,17 +43,17 @@ export const options = {
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 export const data = {
-  labels,
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
       label: 'Plan',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      data: [100, 200, 300, 400, 500, 600, 700], // Ваши дані для "Plan"
       borderColor: '#091E3F',
       backgroundColor: '#091E3F',
     },
     {
       label: 'Act',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      data: [150, 250, 350, 450, 550, 650, 750], // Ваши дані для "Act"
       borderColor: '#FF6B08',
       backgroundColor: '#FF6B08',
     },

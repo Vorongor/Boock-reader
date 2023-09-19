@@ -1,0 +1,36 @@
+.tumb {
+  background: #f6f7fb;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 66px;
+}
+.btn {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+  border: none;
+}
+.chartBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 280px;
+  height: 290px;
+  background: #fff;
+  box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.25);
+}
+.chartTitle {
+  color: #242a37;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}

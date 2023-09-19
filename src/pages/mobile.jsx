@@ -9,7 +9,6 @@ function MobileAuth() {
   const userExist = useSelector(state => state.auth.userExist);
   return (
     <div>
-      <Header />
       <div
         style={{
           display: 'flex',

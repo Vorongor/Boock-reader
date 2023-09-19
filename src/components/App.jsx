@@ -6,6 +6,8 @@ import MobileAuth from 'pages/mobile';
 import Library from 'pages/library';
 import { useSelector } from 'react-redux';
 import { RestrictedRoute } from './RestrictedRoute';
+import NewBoock from './NewBoock/NewBoock';
+import Header from 'layuot/Header';
 
 function App() {
   const isLogined = useSelector(state => state.auth.isLoggedIn);
@@ -13,20 +15,23 @@ function App() {
   return (
     <Suspense fallback={<div>LOADING...</div>}>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/mobile"
-          element={
-            <RestrictedRoute
-              redirectTo="/training"
-              condition={() => !isLogined}
-              component={<MobileAuth />}
-            />
-          }
-        />
-        {/* <Route path="mobile" element={<MobileAuth />} /> */}
-        <Route path="library" element={<Library />} />
-        <Route path="training" element={<Home />} />
+        <Route path="/" element={<Header />}>
+          <Route index element={<Home />} />
+          <Route
+            path="/mobile"
+            element={
+              <RestrictedRoute
+                redirectTo="/training"
+                condition={() => !isLogined}
+                component={<MobileAuth />}
+              />
+            }
+          />
+          {/* <Route path="mobile" element={<MobileAuth />} /> */}
+          <Route path="library" element={<Library />} />
+          <Route path="training" element={<Home />} />
+          <Route path="new-book" element={<NewBoock />} />
+        </Route>
       </Routes>
     </Suspense>
   );

@@ -11,7 +11,6 @@ function Home() {
     <div>
       {userAuthDone ? (
         <div>
-          <Header />
           <TrainingBlock />
         </div>
       ) : (
