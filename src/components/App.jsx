@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 import { RestrictedRoute } from './RestrictedRoute';
 import NewBoock from './NewBoock/NewBoock';
 import Header from 'layuot/Header';
+import Statistic from 'pages/statistic';
+import NewTraining from './NewTraining/NewTraining';
 
 function App() {
   const isLogined = useSelector(state => state.auth.isLoggedIn);
@@ -31,6 +33,8 @@ function App() {
           <Route path="library" element={<Library />} />
           <Route path="training" element={<Home />} />
           <Route path="new-book" element={<NewBoock />} />
+          <Route path="statistic" element={<Statistic />} />
+          <Route path="new-training" element={<NewTraining />} />
         </Route>
       </Routes>
     </Suspense>

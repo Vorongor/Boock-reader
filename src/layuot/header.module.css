@@ -12,6 +12,8 @@
   gap: 58px;
 }
 .link {
+  box-sizing: border-box;
+  margin-left: 22px;
   color: #242a37;
   font-family: Abril Fatface;
   font-size: 20px;

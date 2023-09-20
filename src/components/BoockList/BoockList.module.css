@@ -1,0 +1,67 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.title {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding-left: 20px;
+  color: #242a37;
+  font-family: Montserrat;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.card {
+  box-sizing: border-box;
+  display: flex;
+  padding: 20px;
+  gap: 12px;
+  width: 280px;
+  min-height: 178px;
+  background-color: #fff;
+  box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
+}
+.tumb {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 256px;
+}
+.boockText {
+  color: #242a37;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.tip {
+  display: inline-block;
+  width: 80px;
+  margin: 0;
+  color: #898f9f;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.resume {
+  position: relative;
+  left: 41px;
+  width: 127px;
+  height: 40px;
+  background: #6d7a8d;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

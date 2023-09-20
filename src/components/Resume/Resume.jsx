@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './Resume.module.css';
 import { useDispatch } from 'react-redux';
-import { setModalOff } from 'redux/interFace/slice';
+import { setModalOff } from 'redux/user/slice';
 
 function Resume() {
   const dispatch = useDispatch();
@@ -17,6 +17,23 @@ function Resume() {
   function handleBack() {
     dispatch(setModalOff());
   }
+
+  // Додаємо обробник події клавіші "Escape"
+  const handleEscapeKey = e => {
+    if (e.key === 'Escape') {
+      dispatch(setModalOff());
+    }
+  };
+
+  useEffect(() => {
+    // Додаємо обробник події клавіші "Escape" після монтування компонента
+    window.addEventListener('keydown', handleEscapeKey);
+
+    // Пам'ятайте про видалення обробника події після розмонтування компонента
+    return () => {
+      window.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, []);
 
   return (
     <div className={style.resumeBack}>

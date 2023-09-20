@@ -11,18 +11,23 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
-import { modalReducer } from './interFace/slice';
+import { modalReducer } from './user/slice';
+import { listlReducer } from './library/slice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  // whitelist: ['token'],
+};
+const listlPersistConfig = {
+  key: 'library', // Ключ для збереження
+  storage, // Використовуйте той самий об'єкт сховища
 };
 
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     modal: modalReducer,
+    liba: persistReducer(listlPersistConfig, listlReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -1,18 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './regForm.module.css';
 import { useDispatch } from 'react-redux';
 import { setLogIn, setTestIn } from 'redux/auth/slice';
+import { register } from 'redux/auth/operations';
 
 function RegForm() {
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
   const googleSvg = require('../../img/googleIcon.png');
   const dispatch = useDispatch();
+
+  function handleInputChange(e) {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  }
 
   function handleGoToLog() {
     dispatch(setLogIn());
   }
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(setTestIn());
+    if (user.password === user.chekPassword) {
+      console.log(user);
+      dispatch(
+        register({
+          name: user.name,
+          email: user.email,
+          password: user.password,
+        })
+      );
+    } else {
+      alert('Your passwords don`t match');
+    }
   }
 
   return (
@@ -29,7 +55,9 @@ function RegForm() {
           className={style.input}
           type="text"
           id="regName"
+          name="name"
           placeholder="..."
+          onChange={handleInputChange}
         />
       </label>
       <label className={style.lable} htmlFor="regEmail">
@@ -40,7 +68,9 @@ function RegForm() {
           className={style.input}
           type="text"
           id="regEmail"
+          name="email"
           placeholder="your@email.com"
+          onChange={handleInputChange}
         />
       </label>
       <label className={style.lable} htmlFor="regPass">
@@ -49,9 +79,11 @@ function RegForm() {
         </p>
         <input
           className={style.input}
-          type="text"
+          type="password" // Змінено тип поля на "password"
           id="regPass"
+          name="password"
           placeholder="..."
+          onChange={handleInputChange}
         />
       </label>
       <label className={style.lable} htmlFor="regPass2">
@@ -60,9 +92,11 @@ function RegForm() {
         </p>
         <input
           className={style.input}
-          type="text"
+          type="password" // Змінено тип поля на "password"
           id="regPass2"
+          name="chekPassword"
           placeholder="..."
+          onChange={handleInputChange}
         />
       </label>
       <div className={style.botGrup}>

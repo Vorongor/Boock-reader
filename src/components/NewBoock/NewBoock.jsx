@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './NewBoock.module.css';
 import ArrowBackSvg from 'layuot/svg/arrowBackSvg';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addBook } from 'redux/library/operations';
 
-function NewBoock() {
+function NewBook() {
+  const dispatch = useDispatch();
+  const [book, setBook] = useState({
+    title: '',
+    author: '',
+    year: '',
+    pages: '',
+  });
 
-    function handleAddBoock () {
-        console.log ('func to add the boock')
-    }
+  function handleInputChange(e) {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setBook({
+      ...book,
+      [name]: value,
+    });
+  }
+  function handleAddBook(e) {
+    e.preventDefault();
+    dispatch(addBook(book));
+    console.log('🚀 ~ file: NewBoock.jsx:27 ~ handleAddBook ~ book:', book);
+    console.log('func to add the book');
+  }
   return (
     <div className={style.container}>
       <button className={style.back}>
@@ -15,7 +35,7 @@ function NewBoock() {
           <ArrowBackSvg />
         </Link>
       </button>
-      <form action="submit" className={style.form}>
+      <form action="submit" className={style.form} onSubmit={handleAddBook}>
         <label htmlFor="addTitle" className={style.label}>
           Book title
           <input
@@ -23,6 +43,9 @@ function NewBoock() {
             type="text"
             id="addTitle"
             placeholder="..."
+            name="title"
+            onChange={handleInputChange}
+            required
           />
         </label>
         <label htmlFor="addAuthor" className={style.label}>
@@ -32,6 +55,9 @@ function NewBoock() {
             type="text"
             id="addAuthor"
             placeholder="..."
+            name="author"
+            onChange={handleInputChange}
+            required
           />
         </label>
         <label htmlFor="addYear" className={style.label}>
@@ -41,6 +67,9 @@ function NewBoock() {
             type="text"
             id="addYear"
             placeholder="..."
+            name="year"
+            onChange={handleInputChange}
+            required
           />
         </label>
         <label htmlFor="addPages" className={style.label}>
@@ -50,13 +79,16 @@ function NewBoock() {
             type="text"
             id="addPages"
             placeholder="..."
+            name="pages"
+            onChange={handleInputChange}
+            required
           />
         </label>
+        <button type="submit" className={style.add}>
+          Add
+        </button>
       </form>
-      <button onClick={handleAddBoock} className={style.add}>
-        Add
-      </button>
     </div>
   );
 }
-export default NewBoock;
+export default NewBook;

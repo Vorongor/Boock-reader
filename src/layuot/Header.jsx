@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLogOut } from 'redux/auth/slice';
 import BoockSvg from './svg/boockSvg';
 import HomeSvg from './svg/homeSvg';
+import { logOut } from 'redux/auth/operations';
 
 function Header() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function Header() {
     ? { backgroundColor: 'transparent' }
     : { backgroundColor: '#f5f7fa' };
   function handleLogOut() {
+    dispatch(logOut());
     dispatch(setLogOut());
   }
   return (
@@ -43,7 +45,9 @@ function Header() {
               onClick={handleLogOut}
               type="button"
             >
-              <Link to="/">LogOut</Link>
+              {/* <Link className={style.link} to="/"> */}
+              LogOut
+              {/* </Link> */}
             </button>
           </div>
         )}

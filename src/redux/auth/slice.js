@@ -5,6 +5,7 @@ import {
   logOut,
   refreshUser,
   getUserInfo,
+  googleSignIn,
 } from './operations';
 
 const initialState = {
@@ -40,7 +41,11 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     setLogOut: state => {
+      state.user = { name: null, email: null, password: null };
+      state.token = null;
       state.isLoggedIn = false;
+      state.isRefreshing = false;
+      state.error = null;
       state.userExist = false;
     },
   },
@@ -63,7 +68,7 @@ const authSlice = createSlice({
       })
       .addCase(logIn.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.user = { name: null, email: null, password: null };
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -77,12 +82,16 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(refreshUser.rejected, handleRejected)
-      .addCase(getUserInfo.fulfilled, (state, action) => {
+      .addCase(googleSignIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
+      })
+      .addCase(googleSignIn.rejected, (state, action) => {
+        state.isRefreshing = false;
+        state.error = action.error.message;
       });
   },
 });
