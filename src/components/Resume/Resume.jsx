@@ -34,7 +34,7 @@ function Resume() {
     return () => {
       window.removeEventListener('keydown', handleEscapeKey);
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={style.resumeBack}>
