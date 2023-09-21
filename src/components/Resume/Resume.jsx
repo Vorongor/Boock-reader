@@ -19,13 +19,14 @@ function Resume() {
   }
 
   // Додаємо обробник події клавіші "Escape"
-  const handleEscapeKey = e => {
-    if (e.key === 'Escape') {
-      dispatch(setModalOff());
-    }
-  };
+  
 
   useEffect(() => {
+    const handleEscapeKey = e => {
+      if (e.key === 'Escape') {
+        dispatch(setModalOff());
+      }
+    };
     // Додаємо обробник події клавіші "Escape" після монтування компонента
     window.addEventListener('keydown', handleEscapeKey);
 
@@ -33,7 +34,7 @@ function Resume() {
     return () => {
       window.removeEventListener('keydown', handleEscapeKey);
     };
-  }, [handleEscapeKey]);
+  }, []);
 
   return (
     <div className={style.resumeBack}>

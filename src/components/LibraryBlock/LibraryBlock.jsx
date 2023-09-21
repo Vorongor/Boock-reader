@@ -16,17 +16,16 @@ function LibraryBlock() {
   const currentlyReading = useSelector(state => state.liba.currentlyReading);
   const finishedReading = useSelector(state => state.liba.finishedReading);
 
-  const fetchData = async () => {
-    const data = await dispatch(fetchLibrary());
-    console.log('🚀 ~ file: LibraryBlock.jsx:18 ~ fetchData ~ data:', data);
-    if (goingToRead || currentlyReading || finishedReading) {
-      setLibrary(true);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const data = await dispatch(fetchLibrary());
+      console.log('🚀 ~ file: LibraryBlock.jsx:18 ~ fetchData ~ data:', data);
+      if (goingToRead || currentlyReading || finishedReading) {
+        setLibrary(true);
+      }
+    };
     fetchData();
-  }, [fetchData]);
+  }, []);
 
   return (
     <div>
