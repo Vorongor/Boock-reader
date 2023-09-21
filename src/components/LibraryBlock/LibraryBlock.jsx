@@ -25,7 +25,7 @@ function LibraryBlock() {
       }
     };
     fetchData();
-  }, [dispatch, goingToRead, currentlyReading, finishedReading]);
+  }, []);
 
   return (
     <div>
