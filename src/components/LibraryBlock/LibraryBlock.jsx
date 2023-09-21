@@ -26,7 +26,7 @@ function LibraryBlock() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <div>

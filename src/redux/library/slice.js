@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { deleteBook, fetchLibrary } from 'redux/library/operations';
+import { fetchLibrary } from 'redux/library/operations';
 
 const initialState = {
   goingToRead: [],

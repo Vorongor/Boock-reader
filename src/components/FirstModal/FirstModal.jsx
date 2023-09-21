@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './FirstModal.module.css';
-import ArrowBackSvg from 'layuot/svg/arrowBackSvg';
 import BoockSvg from 'layuot/svg/boockSvg';
 import VectorSvg from 'layuot/svg/VectorSvg';
 import { useDispatch } from 'react-redux';

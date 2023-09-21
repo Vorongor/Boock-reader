@@ -4,7 +4,6 @@ import {
   logIn,
   logOut,
   refreshUser,
-  getUserInfo,
   googleSignIn,
 } from './operations';
 

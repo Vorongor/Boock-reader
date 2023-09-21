@@ -33,7 +33,7 @@ function Resume() {
     return () => {
       window.removeEventListener('keydown', handleEscapeKey);
     };
-  }, []);
+  }, [handleEscapeKey]);
 
   return (
     <div className={style.resumeBack}>
