@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import style from './NewBoock.module.css';
 import ArrowBackSvg from 'layuot/svg/arrowBackSvg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addBook } from 'redux/library/operations';
 
 function NewBook() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [book, setBook] = useState({
     title: '',
     author: '',
-    year: '',
-    pages: '',
+    publishYear: '',
+    pagesTotal: '',
   });
 
   function handleInputChange(e) {
@@ -19,14 +20,15 @@ function NewBook() {
     const { name, value } = e.target;
     setBook({
       ...book,
-      [name]: value,
+      [name]: `${value}`,
     });
   }
   function handleAddBook(e) {
     e.preventDefault();
+    const form = e.target;
     dispatch(addBook(book));
-    console.log('🚀 ~ file: NewBoock.jsx:27 ~ handleAddBook ~ book:', book);
-    console.log('func to add the book');
+    form.reset();
+    navigate('/library');
   }
   return (
     <div className={style.container}>
@@ -67,7 +69,7 @@ function NewBook() {
             type="text"
             id="addYear"
             placeholder="..."
-            name="year"
+            name="publishYear"
             onChange={handleInputChange}
             required
           />
@@ -79,7 +81,7 @@ function NewBook() {
             type="text"
             id="addPages"
             placeholder="..."
-            name="pages"
+            name="pagesTotal"
             onChange={handleInputChange}
             required
           />

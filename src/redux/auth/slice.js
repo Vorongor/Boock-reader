@@ -9,8 +9,10 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: '', email: '', password: '' },
-  token: null,
+  accessToken: '...',
+  refreshToken: '...',
+  sid: '...',
+  userData: {},
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
@@ -42,7 +44,7 @@ const authSlice = createSlice({
     },
     setLogOut: state => {
       state.user = { name: null, email: null, password: null };
-      state.token = null;
+      state.accessToken = null;
       state.isLoggedIn = false;
       state.isRefreshing = false;
       state.error = null;
@@ -51,44 +53,53 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      // fulfilled
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload.userData;
+        state.sid = action.payload.sid;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
       })
-      .addCase(register.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload.userData;
+        state.sid = action.payload.sid;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
       })
-      .addCase(logIn.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null, password: null };
-        state.token = null;
+        state.accessToken = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.error = null;
       })
-      .addCase(refreshUser.pending, handlePending)
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
       })
-      .addCase(refreshUser.rejected, handleRejected)
       .addCase(googleSignIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload.userData;
+        state.sid = action.payload.sid;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
       })
+      //  pending
+      .addCase(refreshUser.pending, handlePending)
+      // rejected
+      .addCase(logIn.rejected, handleRejected)
+      .addCase(register.rejected, handleRejected)
+      .addCase(refreshUser.rejected, handleRejected)
       .addCase(googleSignIn.rejected, (state, action) => {
         state.isRefreshing = false;
         state.error = action.error.message;

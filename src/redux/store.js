@@ -19,14 +19,18 @@ const authPersistConfig = {
   storage,
 };
 const listlPersistConfig = {
-  key: 'library', // Ключ для збереження
-  storage, // Використовуйте той самий об'єкт сховища
+  key: 'liba',
+  storage,
+};
+const modalPersistConfig = {
+  key: 'modal',
+  storage,
 };
 
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    modal: modalReducer,
+    modal: persistReducer(modalPersistConfig, modalReducer),
     liba: persistReducer(listlPersistConfig, listlReducer),
   },
   middleware: getDefaultMiddleware =>

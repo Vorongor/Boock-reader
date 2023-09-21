@@ -16,6 +16,7 @@
   line-height: normal;
 }
 .card {
+  position: relative;
   box-sizing: border-box;
   display: flex;
   padding: 20px;
@@ -25,11 +26,24 @@
   background-color: #fff;
   box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.1);
 }
+.btnBox {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 240px;
+}
+.deleteBtn {
+  border: none;
+  background-color: transparent;
+}
 .tumb {
   display: flex;
   flex-direction: column;
   gap: 14px;
   width: 256px;
+  padding-left: 34px;
 }
 .boockText {
   color: #242a37;

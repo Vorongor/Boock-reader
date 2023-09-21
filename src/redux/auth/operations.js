@@ -44,15 +44,11 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
     const token = state.auth.token;
-
     if (!token) {
       return thunkAPI.rejectWithValue('No token provided');
     }
-
     setAuthHeader(token);
-
     await axios.post('/auth/logout');
-
     clearAuthHeader();
     toast.success('You have logged out');
   } catch (e) {

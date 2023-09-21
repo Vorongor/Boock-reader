@@ -12,6 +12,7 @@
   text-decoration: none;
 }
 .form {
+  position: relative;
   background-color: transparent;
   box-sizing: border-box;
   display: flex;
@@ -38,6 +39,24 @@
   font-weight: 600;
   line-height: normal;
 }
+.label {
+  position: relative;
+}
+.label:active {
+  z-index: 5;
+}
+.start {
+  position: absolute;
+  z-index: 1;
+  left: 12px;
+  top: 12px;
+}
+.drop {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 12px;
+}
 .date,
 .book {
   box-sizing: border-box;
@@ -46,11 +65,22 @@
   border: 1px solid #a6abb9;
   background: #f6f7fb;
   padding: 8px;
+  padding-left: 41px;
 }
 .book {
   background: #fff;
   box-shadow: 0px 1px 2px 0px rgba(29, 29, 27, 0.15) inset;
   border: none;
+  padding: 8px;
+}
+.text,
+.book {
+  color: #a6abb9;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 .btn {
   margin-top: 32px;

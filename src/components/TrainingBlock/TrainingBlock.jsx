@@ -19,7 +19,9 @@ function TrainingBlock() {
         </div>
       </Link>
       <button className={style.btn}>
-        <CircleSvg />
+        <Link to="/new-book">
+          <CircleSvg />
+        </Link>
       </button>
     </div>
   );
