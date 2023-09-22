@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 648px;
+  height: 648px;
   gap: 32px;
   padding: 24px 20px;
   background: #f6f7fb;
@@ -17,6 +17,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
 .label {
@@ -30,7 +31,10 @@
   font-weight: 500;
   line-height: normal;
 }
-.input {
+.inputTite,
+.inputAuthor,
+.inputYear,
+.inputPages {
   box-sizing: border-box;
   padding: 12px;
   width: 280px;
@@ -38,16 +42,20 @@
   border: 1px solid #a6abb9;
   background: #f6f7fb;
 }
-.input:hover,
-.input:focus,
-.input:active {
+input:hover,
+input:focus,
+input:active {
   background: #fff;
   box-shadow: 0px 1px 2px 0px rgba(29, 29, 27, 0.15) inset;
 }
+.btnBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
 .add {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
   box-sizing: border-box;
   width: 171px;
   height: 42px;
@@ -66,4 +74,60 @@
   background: #fff;
   box-shadow: 0px 1px 2px 0px rgba(29, 29, 27, 0.15) inset;
   scale: 1.05;
+}
+@media screen and (min-width: 767px) {
+  .container {
+    height: 280px;
+    justify-content: center;
+    align-items: center;
+  }
+  .back {
+    display: none;
+  }
+  .form {
+    width: 768px;
+    flex-direction: row;
+    gap: 34px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .inputTite {
+    width: 704px;
+    height: 42px;
+  }
+  .inputAuthor {
+    width: 336px;
+    height: 42px;
+  }
+  .inputYear,
+  .inputPages {
+    width: 152px;
+    height: 42px;
+  }
+  .btnBox {
+    width: 100%;
+    padding: 0;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    height: 120px;
+  }
+  .form {
+    width: 1200px;
+    align-items: flex-end;
+  }
+  .inputTite {
+    width: 354px;
+  }
+  .inputAuthor {
+    width: 250px;
+  }
+  .inputPages,
+  .inputYear {
+    width: 134px;
+  }
+  .btnBox {
+    width: 181px;
+  }
 }

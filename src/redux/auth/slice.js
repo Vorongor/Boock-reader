@@ -11,7 +11,7 @@ const initialState = {
   accessToken: '...',
   refreshToken: '...',
   sid: '...',
-  userData: {},
+  userData: { name: '', email: '' },
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
@@ -54,7 +54,7 @@ const authSlice = createSlice({
     builder
       // fulfilled
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.userData;
+        state.userData = action.payload;
         state.sid = action.payload.sid;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;

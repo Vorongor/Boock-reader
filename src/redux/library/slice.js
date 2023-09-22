@@ -5,6 +5,7 @@ const initialState = {
   goingToRead: [],
   currentlyReading: [],
   finishedReading: [],
+  user: { name: '', email: '' },
   isFetching: false,
   error: null,
 };
@@ -32,6 +33,7 @@ const librarySlice = createSlice({
         state.goingToRead = action.payload.goingToRead;
         state.currentlyReading = action.payload.currentlyReading;
         state.finishedReading = action.payload.finishedReading;
+        state.user = action.payload;
         state.isFetching = false;
         state.error = false;
       })

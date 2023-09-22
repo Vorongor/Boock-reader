@@ -10,9 +10,13 @@ import { logOut } from 'redux/auth/operations';
 function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const user = useSelector(state => state.liba.user);
   const location = useLocation();
-
   const library = location.pathname === '/library' ? true : false;
+
+  const userName = user.name;
+
+  const leter = userName.slice(0, 1);
 
   const transparentBgL = library
     ? { backgroundColor: 'transparent' }
@@ -32,22 +36,31 @@ function Header() {
         </Link>
         {isLoggedIn && (
           <div className={style.userBox}>
-            <Link className={style.item} to="/library" style={transparentBgL}>
-              <BoockSvg />
-            </Link>
-            <Link className={style.item} style={transparentBgT} to="/training">
-              <HomeSvg />
-            </Link>
+            <div className={style.navBox}>
+              <Link className={style.item} to="/library" style={transparentBgL}>
+                <BoockSvg />
+              </Link>
+              <Link
+                className={style.item}
+                style={transparentBgT}
+                to="/training"
+              >
+                <HomeSvg />
+              </Link>
+            </div>
             <span className={style.breake}> </span>
-            <div className={style.item}>U</div>
+            <div className={style.userTumb}>
+              <span className={style.userItem}>{leter}</span>
+              <span className={style.fullname}>{userName}</span>
+            </div>
             <button
               className={style.logout}
               onClick={handleLogOut}
               type="button"
             >
-              {/* <Link className={style.link} to="/"> */}
-              LogOut
-              {/* </Link> */}
+              <Link className={style.linkOut} to="/">
+                LogOut
+              </Link>
             </button>
           </div>
         )}

@@ -20,7 +20,6 @@ export const fetchLibrary = createAsyncThunk(
           Authorization: `Bearer ${persistedToken}`,
         },
       });
-      console.log('🚀 ~ file: operations.js:27 ~ response:', response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

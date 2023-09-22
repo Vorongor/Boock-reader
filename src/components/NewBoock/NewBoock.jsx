@@ -41,7 +41,7 @@ function NewBook() {
         <label htmlFor="addTitle" className={style.label}>
           Book title
           <input
-            className={style.input}
+            className={style.inputTite}
             type="text"
             id="addTitle"
             placeholder="..."
@@ -53,7 +53,7 @@ function NewBook() {
         <label htmlFor="addAuthor" className={style.label}>
           Author
           <input
-            className={style.input}
+            className={style.inputAuthor}
             type="text"
             id="addAuthor"
             placeholder="..."
@@ -65,7 +65,7 @@ function NewBook() {
         <label htmlFor="addYear" className={style.label}>
           Publication date
           <input
-            className={style.input}
+            className={style.inputYear}
             type="text"
             id="addYear"
             placeholder="..."
@@ -77,7 +77,7 @@ function NewBook() {
         <label htmlFor="addPages" className={style.label}>
           Amount of pages
           <input
-            className={style.input}
+            className={style.inputPages}
             type="text"
             id="addPages"
             placeholder="..."
@@ -86,9 +86,11 @@ function NewBook() {
             required
           />
         </label>
-        <button type="submit" className={style.add}>
-          Add
-        </button>
+        <div className={style.btnBox}>
+          <button type="submit" className={style.add}>
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );
