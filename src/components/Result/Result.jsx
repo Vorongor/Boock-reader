@@ -15,6 +15,14 @@ function Result() {
     { day: '20.09.23', time: '23:44', result: '125' },
     { day: '21.09.23', time: '8:45', result: '30' },
     { day: '22.09.23', time: '15:20', result: '42' },
+    { day: '23.09.23', time: '10:50', result: '56' },
+    { day: '24.09.23', time: '23:44', result: '125' },
+    { day: '25.09.23', time: '8:45', result: '30' },
+    { day: '26.09.23', time: '15:20', result: '42' },
+    { day: '27.09.23', time: '10:50', result: '56' },
+    { day: '28.09.23', time: '23:44', result: '125' },
+    { day: '29.09.23', time: '8:45', result: '30' },
+    { day: '30.09.23', time: '15:20', result: '42' },
   ];
   return (
     <div className={style.container}>

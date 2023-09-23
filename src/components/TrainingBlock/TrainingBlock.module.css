@@ -17,6 +17,7 @@
   border: none;
 }
 .chartBox {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -54,7 +55,7 @@
   .chartBox {
     width: 704px;
     height: 340px;
-    padding: 35px;
+    padding: 10px 35px;
     align-items: flex-start;
   }
 }
@@ -62,5 +63,12 @@
   .box {
     flex-direction: row-reverse;
     align-items: flex-start;
+  }
+  .tumbBot {
+    flex-direction: row;
+    gap: 32px;
+  }
+  .chartBox {
+    width: 828px;
   }
 }
