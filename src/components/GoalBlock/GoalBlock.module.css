@@ -69,3 +69,35 @@
   font-weight: 500;
   line-height: normal;
 }
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .container {
+    padding: 24px;
+    flex-direction: row;
+    gap: 100px;
+    background: #fff;
+    box-shadow: 0px 2px 3px 0px rgba(9, 30, 63, 0.25);
+  }
+  .tumb {
+    align-items: center;
+  }
+  .goal {
+    width: 275px;
+    height: 60px;
+  }
+  .counter {
+    background-color: transparent;
+    box-shadow: none;
+    height: 80px;
+  }
+  .count {
+    width: 100px;
+    height: 60px;
+    padding: 12px;
+  }
+  .text {
+    width: 124px;
+  }
+}
+@media screen and (min-width: 1200px) {
+ 
+}

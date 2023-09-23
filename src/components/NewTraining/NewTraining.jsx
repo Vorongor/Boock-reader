@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 
 function NewTraining() {
   const list = useSelector(state => state.liba.goingToRead);
-  console.log('🚀 ~ file: NewTraining.jsx:13 ~ NewTraining ~ list:', list);
   const [startDate, setStartDate] = useState(null);
   const [finishDate, setFinishDate] = useState(null);
   const [selectedBook, setSelectedBook] = useState('');
@@ -46,12 +45,12 @@ function NewTraining() {
   }
   return (
     <div className={style.container}>
-      <Link to="/training" className={style.link}>
+      <Link to="/statistic" className={style.link}>
         <ArrowBackSvg />
       </Link>
       <form className={style.form} action="submit" onSubmit={handleSubmit}>
         <h3 className={style.title}>My training</h3>
-        <label className={style.label} htmlFor="startTr">
+        <label className={style.labelStart} htmlFor="startTr">
           <span className={style.start}>
             <CalendarSvg />
           </span>
@@ -70,7 +69,7 @@ function NewTraining() {
             <DropDownSvg />
           </span>
         </label>
-        <label className={style.label} htmlFor="finishTr">
+        <label className={style.labelFinish} htmlFor="finishTr">
           <span className={style.start}>
             <CalendarSvg />
           </span>

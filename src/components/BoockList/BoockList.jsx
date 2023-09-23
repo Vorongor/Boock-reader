@@ -7,7 +7,7 @@ import DeleteSvg from 'layuot/svg/deleteSvg';
 import { deleteBook } from 'redux/library/operations';
 import { deleteBookReload } from 'redux/library/slice';
 
-function BoockList({ arr }) {
+function BoockList({ arr, option }) {
   const dispatch = useDispatch();
 
   function handleResume() {
@@ -18,11 +18,15 @@ function BoockList({ arr }) {
     dispatch(deleteBook(id));
     dispatch(deleteBookReload(id));
   }
+
+  const transparentBg = option
+    ? { backgroundColor: 'transparent', boxShadow: 'none' }
+    : { backgroundColor: '#fff' };
   return (
     <ul className={style.list}>
       {arr.map(boock => {
         return (
-          <li className={style.card} key={boock._id}>
+          <li className={style.card} style={transparentBg} key={boock._id}>
             <div className={style.btnBox}>
               <BoockSvg />
               <button

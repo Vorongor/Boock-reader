@@ -56,6 +56,9 @@
   background-color: transparent;
   border: none;
 }
+.goTraining {
+  text-decoration: none;
+}
 @media screen and (min-width: 768px) {
   .optionBox {
     display: block;
@@ -79,13 +82,16 @@
   .tip .tiptext:first-child {
     flex: 2;
   }
-  .add {
+  .add,
+  .goTraining {
     display: none;
   }
   .start {
     width: 200px;
   }
 }
-@media screen and (min-width: 768px) {
-  
+@media screen and (min-width: 1200px) {
+  .block {
+    width: 95%;
+  }
 }

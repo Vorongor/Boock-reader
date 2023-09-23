@@ -89,7 +89,6 @@ function CountDown() {
             </ul>
           </div>
         }
-        <div className={style.timer}></div>
       </div>
     </div>
   );

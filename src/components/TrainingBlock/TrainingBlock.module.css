@@ -1,4 +1,5 @@
-.tumb {
+.tumb,
+.tumbBot {
   background: #f6f7fb;
   position: relative;
   display: flex;
@@ -8,8 +9,8 @@
   padding-bottom: 66px;
 }
 .btn {
-  position: fixed;
-  bottom: 12px;
+  position: absolute;
+  bottom: 36px;
   left: 50%;
   transform: translateX(-50%);
   background-color: transparent;
@@ -33,4 +34,33 @@
   font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
+}
+.optBox {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  /* .optBox {
+    display: block;
+  } */
+  .btn {
+    display: none;
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .chartBox {
+    width: 704px;
+    height: 340px;
+    padding: 35px;
+    align-items: flex-start;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .box {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
 }

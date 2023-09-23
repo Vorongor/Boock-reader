@@ -60,7 +60,7 @@ function LibraryBlock() {
                 <BoockList arr={goingToRead} />
               </div>
             )}
-            <Link to="/new-training" style={{ textDecoration: 'none' }}>
+            <Link to="/new-training" className={style.goTraining}>
               <button type="button" className={style.start}>
                 My training
               </button>

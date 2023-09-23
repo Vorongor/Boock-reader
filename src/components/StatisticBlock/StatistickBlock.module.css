@@ -1,0 +1,25 @@
+.box {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  box-sizing: border-box;
+  width: 171px;
+  height: 42px;
+  background: #ff6b08;
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+@media screen and (min-width: 768px) {
+  .btn {
+    margin: 40px;
+  }
+}

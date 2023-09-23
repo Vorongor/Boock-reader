@@ -1,15 +1,15 @@
 import Chart from 'components/Chart/Chart';
 import CountDown from 'components/CountDown/CountDown';
 import GoalBlock from 'components/GoalBlock/GoalBlock';
-import LibraryBlock from 'components/LibraryBlock/LibraryBlock';
+import StatistickBlock from 'components/StatisticBlock/StatistickBlock';
 import React from 'react';
 
 function Statistic() {
   return (
-    <div>
+    <div style={{ backgroundColor: '#F6F7FB' }}>
       <CountDown />
       <GoalBlock />
-      <LibraryBlock />
+      <StatistickBlock />
       <Chart />
     </div>
   );
