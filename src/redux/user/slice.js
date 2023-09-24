@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addPlanning, fetchPlanning } from './operations';
 
 const initialState = {
+  planingData: null,
   showModal: false,
   firstIn: true,
-  liba: [],
+  startDay: false,
 };
 
 const modalSlice = createSlice({
@@ -22,6 +24,11 @@ const modalSlice = createSlice({
     setFirstIn: state => {
       state.firstIn = true;
     },
+  },
+  extraReducers: builder => {
+    builder.addCase(fetchPlanning.fulfilled, (state, action) => {
+      state.planingData = action.payload;
+    });
   },
 });
 export const { setModalOn, setModalOff, setUsualIn, setFirstIn } =

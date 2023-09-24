@@ -6,7 +6,7 @@ import BoockList from 'components/BoockList/BoockList';
 function TrainingList() {
   const [isTrainingContinue, setTrainingCondition] = useState(false);
   const [buttonContent, setBtnContent] = useState('Start traning');
-  const arr = useSelector(state => state.liba.goingToRead);
+  const arr = useSelector(state => state.liba.currentlyReading);
   function handleStart() {
     setTrainingCondition(!isTrainingContinue);
     if (isTrainingContinue) {

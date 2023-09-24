@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './Result.module.css';
+import { useDispatch } from 'react-redux';
+import { patchPlanning } from 'redux/user/operations';
 
 function Result() {
+  const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(null);
+  const [pages, setPages] = useState('');
 
   const handleStartDateChange = date => {
     setStartDate(date);
+  };
+  const pagesChange = number => {
+    setPages(number);
   };
 
   const list = [
@@ -24,23 +31,34 @@ function Result() {
     { day: '29.09.23', time: '8:45', result: '30' },
     { day: '30.09.23', time: '15:20', result: '42' },
   ];
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(patchPlanning({ pages }));
+    setPages('');
+  }
   return (
     <div className={style.container}>
       <h3 className={style.title}>RESULT</h3>
-      <form action="submit" className={style.form}>
+      <form action="submit" className={style.form} onSubmit={handleSubmit}>
         <DatePicker
           className={style.date}
           selected={startDate}
           minDate={new Date()}
           onChange={handleStartDateChange}
-          dateFormat="yyyy-MM-dd HH:mm" // Змінено формат для включення годин і хвилин
+          dateFormat="yyyy-MM-dd HH:mm"
           name="dataStart"
           placeholderText="Start Date"
-          showTimeSelect // Вмикає вибір годин і хвилин
-          timeFormat="HH:mm" // Формат годин і хвилин
+          showTimeSelect
+          timeFormat="HH:mm"
           required
         />
-        <input type="number" className={style.page} />
+        <input
+          type="number"
+          name="pages"
+          onChange={pagesChange}
+          className={style.page}
+        />
         <button type="submit" className={style.btn}>
           Add result
         </button>
@@ -54,7 +72,7 @@ function Result() {
               <p className={style.time}>{item.time}</p>
               <p className={style.result}>
                 {item.result}
-                <span className={style.tip}>  pages</span>
+                <span className={style.tip}> pages</span>
               </p>
             </li>
           );

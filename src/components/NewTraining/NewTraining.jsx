@@ -6,18 +6,31 @@ import CalendarSvg from 'layuot/svg/calendarSvg';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import DropDownSvg from 'layuot/svg/DropDownSvg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPlanning } from 'redux/user/operations';
 
 function NewTraining() {
+  const dispatch = useDispatch();
   const list = useSelector(state => state.liba.goingToRead);
   const [startDate, setStartDate] = useState(null);
   const [finishDate, setFinishDate] = useState(null);
   const [selectedBook, setSelectedBook] = useState('');
+
+  const books = list.map(item => item.title);
+
+  function findBookDataByTitle(title) {
+    return list.find(book => book.title === title);
+  }
+  const formatDate = date => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Додаємо 1, так як місяці в JavaScript починаються з 0
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   const handleBookChange = e => {
     setSelectedBook(e.target.value);
   };
-
-  const books = list.map(item => item.title);
 
   const handleStartDateChange = date => {
     setStartDate(date);
@@ -31,11 +44,12 @@ function NewTraining() {
     const form = e.target;
     if (startDate < finishDate) {
       const newTraining = {
-        start: startDate,
-        finish: finishDate,
-        book: selectedBook,
+        startDate: formatDate(startDate),
+        endDate: formatDate(finishDate),
+        books: [findBookDataByTitle(selectedBook)._id],
       };
       console.log(newTraining);
+      dispatch(addPlanning(newTraining));
       form.reset();
     } else {
       alert(
