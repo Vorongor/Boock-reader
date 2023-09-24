@@ -50,7 +50,7 @@ function BoockList({ arr, option, category }) {
               </p>
               <p className={style.boockText}>
                 <span className={style.tip}>Pages: </span>
-                {boock.pagesTotal}
+                {boock.pagesTotal}/{boock.pagesFinished}
               </p>
               {boock.rating && (
                 <p className={style.boockText}>

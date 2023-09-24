@@ -70,7 +70,7 @@ export const googleSignIn = createAsyncThunk('/auth/google', async thunkAPI => {
 
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
-  async (_, thunkAPI) => {
+  async (sid, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
@@ -80,7 +80,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const response = await axios.get('/users/current');
+      const response = await axios.post('/auth/refresh', sid);
       toast.success('You are logged in');
       return response.data;
     } catch (error) {

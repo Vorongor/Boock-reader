@@ -29,7 +29,6 @@ function App() {
               />
             }
           />
-          {/* <Route path="mobile" element={<MobileAuth />} /> */}
           <Route path="library" element={<Library />} />
           <Route path="training" element={<Home />} />
           <Route path="new-book" element={<NewBoock />} />

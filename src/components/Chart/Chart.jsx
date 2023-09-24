@@ -10,6 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(
   CategoryScale,
@@ -39,7 +40,6 @@ export const options = {
   },
 };
 
-// Оновлені дані для графіка
 const list = [
   { day: '19.09.23', time: '10:50', result: '56' },
   { day: '20.09.23', time: '23:44', result: '125' },
@@ -84,14 +84,15 @@ export const data = {
     },
     {
       label: 'Act',
-      data: planGoal, // Замініть це на відповідні дані для "Act", якщо вони відмінні від "Plan"
+      data: planGoal, 
       borderColor: '#FF6B08',
       backgroundColor: '#FF6B08',
     },
   ],
 };
 
-function Chart() {
+function Chart({data}) {
+
   return <Line options={options} data={data} />;
 }
 

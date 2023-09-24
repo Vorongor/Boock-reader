@@ -22,7 +22,6 @@ export const fetchPlanning = createAsyncThunk(
           ...curentHeaders,
         },
       });
-      console.log('🚀 ~ file: operations.js:24 ~ response:', response);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
