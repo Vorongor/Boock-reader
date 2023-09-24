@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import CountDown from 'components/CountDown/CountDown';
 import Result from 'components/Result/Result';
 import { fetchPlanning } from 'redux/user/operations';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 function TrainingBlock() {
   const dispatch = useDispatch();
   // const plan = useSelector(state => state.modal.planingData);
@@ -20,7 +20,7 @@ function TrainingBlock() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   function showFetch() {}
 

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addPlanning, fetchPlanning } from './operations';
+import { fetchPlanning } from './operations';
 
 const initialState = {
   planingData: null,
