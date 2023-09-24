@@ -75,3 +75,28 @@ export const deleteBook = createAsyncThunk(
     }
   }
 );
+export const addReview = createAsyncThunk(
+  '/book/addReview',
+  async (bookId, feedback, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.accessToken;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user info');
+    }
+    try {
+      const curentHeaders = setAuthHeader(persistedToken);
+      const jsonData = JSON.stringify(feedback);
+      const response = await axios.patch(`/book/review/${bookId}`, jsonData, {
+        headers: {
+          'Content-Type': 'application/json',
+          ...curentHeaders,
+        },
+      });
+      console.log('🚀 ~ file: operations.js:92 ~ response:', response);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

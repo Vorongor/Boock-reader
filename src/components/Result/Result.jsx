@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './Result.module.css';
 import { useDispatch } from 'react-redux';
-import { patchPlanning } from 'redux/user/operations';
+import { updatePlanning } from 'redux/user/operations';
 
 function Result() {
   const dispatch = useDispatch();
@@ -34,8 +34,10 @@ function Result() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(patchPlanning({ pages }));
-    setPages('');
+    const form = e.target;
+    dispatch(updatePlanning(pages));
+    form.reset();
+    console.log('done');
   }
   return (
     <div className={style.container}>

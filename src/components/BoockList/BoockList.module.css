@@ -91,6 +91,9 @@
   .tumb .boockText:first-child {
     flex: 2;
   }
+  .resume {
+    transform: translateX(-100px);
+  }
   .tip {
     display: none;
   }

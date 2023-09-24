@@ -39,7 +39,7 @@ function LibraryBlock() {
             {finishedReading.length > 0 && (
               <div className={style.block}>
                 <h3 className={style.title}>Already read</h3>
-                <BoockList arr={finishedReading} />
+                <BoockList arr={finishedReading} category={true} />
               </div>
             )}
             {currentlyReading.length > 0 && (

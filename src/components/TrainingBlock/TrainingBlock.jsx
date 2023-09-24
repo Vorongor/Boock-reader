@@ -11,7 +11,6 @@ import { fetchPlanning } from 'redux/user/operations';
 import { useDispatch } from 'react-redux';
 function TrainingBlock() {
   const dispatch = useDispatch();
-  // const plan = useSelector(state => state.modal.planingData);
 
   async function fetchData() {
     const plan = await dispatch(fetchPlanning());

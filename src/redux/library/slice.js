@@ -8,6 +8,7 @@ const initialState = {
   user: { name: '', email: '' },
   isFetching: false,
   error: null,
+  currentId: null,
 };
 
 const librarySlice = createSlice({
@@ -26,6 +27,9 @@ const librarySlice = createSlice({
         book => book._id !== bookIdToDelete
       );
     },
+    setId: (state, action) => {
+      state.currentId = action.payload;
+    }
   },
   extraReducers: builder => {
     builder
@@ -42,5 +46,5 @@ const librarySlice = createSlice({
       });
   },
 });
-export const { deleteBookReload } = librarySlice.actions;
+export const { deleteBookReload, setId } = librarySlice.actions;
 export const listlReducer = librarySlice.reducer;

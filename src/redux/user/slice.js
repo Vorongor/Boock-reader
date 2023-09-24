@@ -9,7 +9,7 @@ const initialState = {
 };
 
 const modalSlice = createSlice({
-  name: 'iterface',
+  name: 'modal',
   initialState,
   reducers: {
     setModalOn: state => {

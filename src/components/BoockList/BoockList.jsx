@@ -5,13 +5,14 @@ import { useDispatch } from 'react-redux';
 import { setModalOn } from 'redux/user/slice';
 import DeleteSvg from 'layuot/svg/deleteSvg';
 import { deleteBook } from 'redux/library/operations';
-import { deleteBookReload } from 'redux/library/slice';
+import { deleteBookReload, setId } from 'redux/library/slice';
 
-function BoockList({ arr, option }) {
+function BoockList({ arr, option, category }) {
   const dispatch = useDispatch();
 
-  function handleResume() {
+  function handleResume(id) {
     dispatch(setModalOn());
+    dispatch(setId(id));
   }
 
   function handleDelete(id) {
@@ -51,15 +52,15 @@ function BoockList({ arr, option }) {
                 <span className={style.tip}>Pages: </span>
                 {boock.pagesTotal}
               </p>
-              {boock.raiting && (
+              {boock.rating && (
                 <p className={style.boockText}>
                   <span className={style.tip}>Raiting: </span>
-                  {boock.raiting}
+                  {boock.rating}
                 </p>
               )}
-              {boock.raiting && (
+              {category && (
                 <button
-                  onClick={handleResume}
+                  onClick={() => handleResume(boock._id)}
                   type="button"
                   className={style.resume}
                 >
