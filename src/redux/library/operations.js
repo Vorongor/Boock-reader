@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -15,11 +14,12 @@ export const fetchLibrary = createAsyncThunk(
       return thunkAPI.rejectWithValue('Unable to fetch user info');
     }
     try {
-      const response = await axios.get('/user/books', {
+      const response = await axios.get('/books/all', {
         headers: {
           Authorization: `Bearer ${persistedToken}`,
         },
       });
+      console.log('🚀 ~ file: operations.js:23 ~ response:', response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -39,7 +39,7 @@ export const addBook = createAsyncThunk(
     try {
       const curentHeaders = setAuthHeader(persistedToken);
       const jsonData = JSON.stringify(book);
-      const response = await axios.post('/book', jsonData, {
+      const response = await axios.post('/books/add', jsonData, {
         headers: {
           'Content-Type': 'application/json',
           ...curentHeaders,
@@ -63,7 +63,7 @@ export const deleteBook = createAsyncThunk(
     }
     try {
       const curentHeaders = setAuthHeader(persistedToken);
-      await axios.delete(`/book/${bookId}`, {
+      await axios.delete(`/books/book/${bookId}`, {
         headers: {
           'Content-Type': 'application/json',
           ...curentHeaders,

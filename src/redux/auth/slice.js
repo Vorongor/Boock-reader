@@ -10,8 +10,9 @@ import {
 const initialState = {
   accessToken: '...',
   refreshToken: '...',
-  sid: '...',
-  userData: { name: '', email: '' },
+  name: '',
+  email: '',
+  startDay: '',
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
@@ -42,7 +43,8 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     setLogOut: state => {
-      state.user = { name: null, email: null, password: null };
+      state.name = null;
+      state.email = null;
       state.accessToken = null;
       state.isLoggedIn = false;
       state.isRefreshing = false;
@@ -54,19 +56,21 @@ const authSlice = createSlice({
     builder
       // fulfilled
       .addCase(register.fulfilled, (state, action) => {
-        state.userData = action.payload;
-        state.sid = action.payload.sid;
+        state.name = action.payload.name;
+        state.email = action.payload.email;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
+        state.startDay = action.payload.createdAt;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
       })
       .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.userData;
-        state.sid = action.payload.sid;
+        state.name = action.payload.name;
+        state.email = action.payload.email;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
+        state.startDay = action.payload.createdAt;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
@@ -79,17 +83,18 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.userData = action.payload;
-        state.sid = action.payload.sid;
+        state.userData.name = action.payload.name;
+        state.userData.email = action.payload.email;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
+        state.startDay = action.payload.createdAt;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
       })
       .addCase(googleSignIn.fulfilled, (state, action) => {
-        state.user = action.payload.userData;
-        state.sid = action.payload.sid;
+        state.userData.name = action.payload.name;
+        state.userData.email = action.payload.email;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;

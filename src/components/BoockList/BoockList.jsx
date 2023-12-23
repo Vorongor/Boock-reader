@@ -1,14 +1,16 @@
 import React from 'react';
 import style from './BoockList.module.css';
 import BoockSvg from 'layuot/svg/boockSvg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setModalOn } from 'redux/user/slice';
 import DeleteSvg from 'layuot/svg/deleteSvg';
 import { deleteBook } from 'redux/library/operations';
 import { deleteBookReload, setId } from 'redux/library/slice';
 
-function BoockList({ arr, option, category }) {
+function BoockList({ option, category }) {
   const dispatch = useDispatch();
+  const liba = useSelector(state => state.liba.liba);
+  const arr = liba.filter(item => item.state === 'reading');
 
   function handleResume(id) {
     dispatch(setModalOn());
@@ -46,11 +48,11 @@ function BoockList({ arr, option, category }) {
               </p>
               <p className={style.boockText}>
                 <span className={style.tip}>Year: </span>
-                {boock.publishYear}
+                {boock.year}
               </p>
               <p className={style.boockText}>
                 <span className={style.tip}>Pages: </span>
-                {boock.pagesTotal}/{boock.pagesFinished}
+                {boock.pagesRead}/{boock.pages}
               </p>
               {boock.rating && (
                 <p className={style.boockText}>

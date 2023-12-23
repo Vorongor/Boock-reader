@@ -2,7 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://bookread-backend.goit.global';
+axios.defaults.baseURL = 'https://bookreader-rest.onrender.com/';
+// axios.defaults.baseURL = 'http://localhost:3012';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -17,7 +18,6 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('auth/register', credentials);
-      console.log(response.data);
       toast.success('User is registered');
       return response.data;
     } catch (e) {
@@ -30,8 +30,7 @@ export const logIn = createAsyncThunk(
   'auth/logIn',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/auth/logIn', credentials);
-      setAuthHeader(response.data.token);
+      const response = await axios.post('auth/login', credentials);
       toast.success('You are logged in');
       return response.data;
     } catch (e) {
@@ -40,7 +39,7 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
     const token = state.auth.token;
@@ -101,7 +100,7 @@ export const getUserInfo = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/current');
+      const res = await axios.get('/users/info');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

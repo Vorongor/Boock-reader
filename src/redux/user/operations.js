@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://bookread-backend.goit.global';
+// axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -16,12 +16,13 @@ export const fetchPlanning = createAsyncThunk(
     }
     try {
       const curentHeaders = setAuthHeader(persistedToken);
-      const response = await axios.get('/planning', {
+      const response = await axios.get('/books/all', {
         headers: {
           'Content-Type': 'application/json',
           ...curentHeaders,
         },
       });
+      console.log('🚀 ~ file: operations.js:25 ~ response:', response);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

@@ -10,13 +10,16 @@ import { logOut } from 'redux/auth/operations';
 function Header() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-  const user = useSelector(state => state.liba.user);
+  const userName = useSelector(state => state.auth.name);
+  const userEmail = useSelector(state => state.auth.email);
   const location = useLocation();
   const library = location.pathname === '/library' ? true : false;
 
-  const userName = user.name;
+  let leter;
 
-  const leter = userName.slice(0, 1);
+  if (userEmail) {
+    leter = userName.slice(0, 1);
+  }
 
   const transparentBgL = library
     ? { backgroundColor: 'transparent' }

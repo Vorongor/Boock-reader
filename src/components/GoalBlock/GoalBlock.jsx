@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './GoalBlock.module.css';
 import { useSelector } from 'react-redux';
 function GoalBlock() {
-  const amountOfBooks = useSelector(state => state.liba.currentlyReading)
+  const amountOfBooks = useSelector(state => state.liba.liba);
+  const startDay = useSelector(state => state.auth.startDay);
+  const booksLeft = amountOfBooks.filter(item => item.state === 'reading');
+
+  const [daysCount, setDaysCount] = useState(null);
+  console.log('🚀 ~ file: GoalBlock.jsx:9 ~ GoalBlock ~ daysCount:', daysCount);
+
+  useEffect(() => {
+    const startDate = new Date(startDay);
+    const currentDate = new Date();
+
+    const timeDifference = currentDate - startDate;
+
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+    setDaysCount(days);
+  }, []);
+
   return (
     <div className={style.container}>
       <h3 className={style.goal}>My goals</h3>
@@ -12,8 +29,14 @@ function GoalBlock() {
           <p className={style.text}>Amount of books</p>
         </div>
         <div className={style.tumb}>
-          <span className={style.count}>0</span>
+          <span className={style.count}>{daysCount}</span>
           <p className={style.text}>Amount of days</p>
+        </div>
+        <div className={style.tumb}>
+          <span className={style.count}>
+            <span style={{ color: '#FF6B08' }}>{booksLeft.length}</span>
+          </span>
+          <p className={style.text}>Amount of books</p>
         </div>
       </div>
     </div>

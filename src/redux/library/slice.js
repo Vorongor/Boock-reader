@@ -2,10 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchLibrary } from 'redux/library/operations';
 
 const initialState = {
-  goingToRead: [],
-  currentlyReading: [],
-  finishedReading: [],
-  user: { name: '', email: '' },
+  liba: [],
   isFetching: false,
   error: null,
   currentId: null,
@@ -29,15 +26,12 @@ const librarySlice = createSlice({
     },
     setId: (state, action) => {
       state.currentId = action.payload;
-    }
+    },
   },
   extraReducers: builder => {
     builder
       .addCase(fetchLibrary.fulfilled, (state, action) => {
-        state.goingToRead = action.payload.goingToRead;
-        state.currentlyReading = action.payload.currentlyReading;
-        state.finishedReading = action.payload.finishedReading;
-        state.user = action.payload;
+        state.liba = action.payload.data;
         state.isFetching = false;
         state.error = false;
       })

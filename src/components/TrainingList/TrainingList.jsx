@@ -6,7 +6,8 @@ import BoockList from 'components/BoockList/BoockList';
 function TrainingList() {
   const [isTrainingContinue, setTrainingCondition] = useState(false);
   const [buttonContent, setBtnContent] = useState('Start traning');
-  const arr = useSelector(state => state.liba.currentlyReading);
+  const arr = useSelector(state => state.liba.liba);
+  console.log('🚀 ~ file: TrainingList.jsx:10 ~ TrainingList ~ arr:', arr);
   function handleStart() {
     setTrainingCondition(!isTrainingContinue);
     if (isTrainingContinue) {
@@ -22,7 +23,7 @@ function TrainingList() {
         <NewTraining />
       </div>
       <div className={style.box}>
-        <BoockList arr={arr} option={true} />
+        <BoockList option={true} />
       </div>
       <button type="button" onClick={handleStart} className={style.start}>
         {buttonContent}

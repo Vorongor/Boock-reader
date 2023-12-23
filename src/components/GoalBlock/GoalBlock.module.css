@@ -39,13 +39,14 @@
   gap: 14px;
 }
 .count {
-  display: inline-block;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   padding: 31px;
   margin: 0;
-  width: 100px;
-  height: 100px;
+  width: 66px;
+  height: 66px;
   background: #f5f7fa;
   box-shadow: 4px 4px 8px 0px rgba(36, 42, 55, 0.15);
   color: #091e3f;
@@ -99,5 +100,4 @@
   }
 }
 @media screen and (min-width: 1200px) {
- 
 }
