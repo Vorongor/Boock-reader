@@ -36,7 +36,7 @@ function GoalBlock() {
           <span className={style.count}>
             <span style={{ color: '#FF6B08' }}>{booksLeft.length}</span>
           </span>
-          <p className={style.text}>Amount of books</p>
+          <p className={style.text}>Books left</p>
         </div>
       </div>
     </div>

@@ -19,7 +19,6 @@ export const fetchLibrary = createAsyncThunk(
           Authorization: `Bearer ${persistedToken}`,
         },
       });
-      console.log('🚀 ~ file: operations.js:23 ~ response:', response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -45,6 +44,7 @@ export const addBook = createAsyncThunk(
           ...curentHeaders,
         },
       });
+      console.log('🚀 ~ file: operations.js:47 ~ response:', response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

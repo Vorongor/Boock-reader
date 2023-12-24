@@ -7,10 +7,10 @@ import DeleteSvg from 'layuot/svg/deleteSvg';
 import { deleteBook } from 'redux/library/operations';
 import { deleteBookReload, setId } from 'redux/library/slice';
 
-function BoockList({ option, category }) {
+function BoockList({ state, option, category }) {
   const dispatch = useDispatch();
   const liba = useSelector(state => state.liba.liba);
-  const arr = liba.filter(item => item.state === 'reading');
+  const arr = liba.filter(item => item.state === state);
 
   function handleResume(id) {
     dispatch(setModalOn());
@@ -52,7 +52,7 @@ function BoockList({ option, category }) {
               </p>
               <p className={style.boockText}>
                 <span className={style.tip}>Pages: </span>
-                {boock.pagesRead}/{boock.pages}
+                {boock.pagesRead || 0} / {boock.pages}
               </p>
               {boock.rating && (
                 <p className={style.boockText}>

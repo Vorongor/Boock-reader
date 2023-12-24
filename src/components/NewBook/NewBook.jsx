@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from './NewBoock.module.css';
+import style from './NewBook.module.css';
 import ArrowBackSvg from 'layuot/svg/arrowBackSvg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -27,6 +27,7 @@ function NewBook() {
     e.preventDefault();
     const form = e.target;
     dispatch(addBook(book));
+    console.log('🚀 ~ file: NewBook.jsx:30 ~ handleAddBook ~ book:', book);
     form.reset();
     navigate('/library');
   }
@@ -69,7 +70,7 @@ function NewBook() {
             type="text"
             id="addYear"
             placeholder="..."
-            name="publishYear"
+            name="year"
             onChange={handleInputChange}
             required
           />
@@ -81,7 +82,7 @@ function NewBook() {
             type="text"
             id="addPages"
             placeholder="..."
-            name="pagesTotal"
+            name="pages"
             onChange={handleInputChange}
             required
           />

@@ -82,8 +82,7 @@
   .tip .tiptext:first-child {
     flex: 2;
   }
-  .add,
-  .goTraining {
+  .add {
     display: none;
   }
   .start {

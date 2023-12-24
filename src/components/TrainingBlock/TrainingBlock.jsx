@@ -21,7 +21,7 @@ function TrainingBlock() {
 
   useEffect(() => {
     fetchData();
-  }, [dispatch]);
+  });
 
   return (
     <div className={style.tumb}>

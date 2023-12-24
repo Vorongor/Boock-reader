@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchLibrary } from 'redux/library/operations';
+import { addBook, fetchLibrary } from 'redux/library/operations';
 
 const initialState = {
   liba: [],
@@ -37,6 +37,9 @@ const librarySlice = createSlice({
       })
       .addCase(fetchLibrary.rejected, (state, action) => {
         state.error = action.error.message;
+      })
+      .addCase(addBook.fulfilled, (state, action) => {
+        state.liba.push(action.payload.data);
       });
   },
 });

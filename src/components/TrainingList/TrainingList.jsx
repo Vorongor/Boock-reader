@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import style from './TrainingList.module.css';
 import NewTraining from 'components/NewTraining/NewTraining';
-import { useSelector } from 'react-redux';
 import BoockList from 'components/BoockList/BoockList';
+
 function TrainingList() {
   const [isTrainingContinue, setTrainingCondition] = useState(false);
   const [buttonContent, setBtnContent] = useState('Start traning');
-  const arr = useSelector(state => state.liba.liba);
-  console.log('🚀 ~ file: TrainingList.jsx:10 ~ TrainingList ~ arr:', arr);
+
   function handleStart() {
     setTrainingCondition(!isTrainingContinue);
     if (isTrainingContinue) {
@@ -23,7 +22,7 @@ function TrainingList() {
         <NewTraining />
       </div>
       <div className={style.box}>
-        <BoockList option={true} />
+        <BoockList state={'reading'} option={true} />
       </div>
       <button type="button" onClick={handleStart} className={style.start}>
         {buttonContent}

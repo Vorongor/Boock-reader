@@ -16,7 +16,7 @@ export const fetchPlanning = createAsyncThunk(
     }
     try {
       const curentHeaders = setAuthHeader(persistedToken);
-      const response = await axios.get('/books/all', {
+      const response = await axios.get('/planing/all', {
         headers: {
           'Content-Type': 'application/json',
           ...curentHeaders,
@@ -41,12 +41,13 @@ export const addPlanning = createAsyncThunk(
     try {
       const curentHeaders = setAuthHeader(persistedToken);
       const jsonData = JSON.stringify(plan);
-      const response = await axios.post('/planning', jsonData, {
+      const response = await axios.post('/planing/add', jsonData, {
         headers: {
           'Content-Type': 'application/json',
           ...curentHeaders,
         },
       });
+      console.log('🚀 ~ file: operations.js:50 ~ response:', response);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

@@ -6,7 +6,7 @@ import MobileAuth from 'pages/mobile';
 import Library from 'pages/library';
 import { useSelector } from 'react-redux';
 import { RestrictedRoute } from './RestrictedRoute';
-import NewBoock from './NewBoock/NewBoock';
+import NewBoock from './NewBook/NewBook';
 import Header from 'layuot/Header';
 import Statistic from 'pages/statistic';
 import NewTraining from './NewTraining/NewTraining';
