@@ -40,25 +40,22 @@ function BookChart() {
   const activeBook = useSelector(state => state.liba.activeBook);
 
   if (!activeBook) {
-    // No book chosen, show a default chart with no data
     return <Line options={options} data={{}} />;
   }
 
   const book = liba.find(item => item._id === activeBook);
 
   function countDaysFromPlan(plan) {
-    const dayInMillis = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+    const dayInMillis = 24 * 60 * 60 * 1000; //
     const daysArray = [];
 
-    // Convert plan's start and finish times to Date objects
-    const startTime = new Date(plan.startTime * 1000); // Convert from Unix timestamp
-    const finishTime = new Date(plan.finishTime * 1000); // Convert from Unix timestamp
+    const startTime = new Date(plan.startTime * 1000);
+    const finishTime = new Date(plan.finishTime * 1000);
 
-    // Iterate from start date to finish date
     let currentDate = startTime;
     while (currentDate <= finishTime) {
-      const timestamp = Math.floor(currentDate.getTime() / 1000); // Convert to Unix timestamp
-      const formattedDate = formatDate(currentDate); // Format date as "dd-mm-yyyy"
+      const timestamp = Math.floor(currentDate.getTime() / 1000);
+      const formattedDate = formatDate(currentDate);
       daysArray.push({ timestamp, formattedDate });
       currentDate = new Date(currentDate.getTime() + dayInMillis);
     }
@@ -68,7 +65,7 @@ function BookChart() {
 
   function formatDate(date) {
     const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
   }
@@ -77,7 +74,6 @@ function BookChart() {
   const plannedPages = calculatePlannedPages(book);
   const realResult = calculateRealResult(book);
 
-  // Filter out days for which no results exist
   const filteredLabels = labels.filter(
     label => realResult[labels.indexOf(label)] !== undefined
   );
@@ -91,14 +87,14 @@ function BookChart() {
       {
         label: 'Planned Pages per Day',
         data: filteredPlannedPages,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: '#091E3F',
+        backgroundColor: '#091E3F',
       },
       {
         label: 'Real Result',
         data: realResult,
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        borderColor: '#FF6B08',
+        backgroundColor: '#FF6B08',
       },
     ],
   };
