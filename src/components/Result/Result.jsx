@@ -2,43 +2,62 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './Result.module.css';
-import { useDispatch } from 'react-redux';
-import { updatePlanning } from 'redux/user/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPlanning, addTraining } from 'redux/library/operations';
 
 function Result() {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(null);
-  const [pages, setPages] = useState('');
-
+  const [pages, setPages] = useState(null);
+  const formatDate = date => {
+    return Math.floor(date.getTime() / 1000);
+  };
   const handleStartDateChange = date => {
     setStartDate(date);
   };
-  const pagesChange = number => {
-    setPages(number);
+  const pagesChange = num => {
+    setPages(parseInt(num));
   };
 
-  const list = [
-    { day: '19.09.23', time: '10:50', result: '56' },
-    { day: '20.09.23', time: '23:44', result: '125' },
-    { day: '21.09.23', time: '8:45', result: '30' },
-    { day: '22.09.23', time: '15:20', result: '42' },
-    { day: '23.09.23', time: '10:50', result: '56' },
-    { day: '24.09.23', time: '23:44', result: '125' },
-    { day: '25.09.23', time: '8:45', result: '30' },
-    { day: '26.09.23', time: '15:20', result: '42' },
-    { day: '27.09.23', time: '10:50', result: '56' },
-    { day: '28.09.23', time: '23:44', result: '125' },
-    { day: '29.09.23', time: '8:45', result: '30' },
-    { day: '30.09.23', time: '15:20', result: '42' },
-  ];
+  const liba = useSelector(state => state.liba.liba);
+  const activeBook = useSelector(state => state.liba.activeBook);
+
+  const book = liba.find(item => item._id === activeBook);
+  const list = [];
+
+  function dateSeparator(unixDate) {
+    const date = new Date(unixDate * 1000);
+
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const timeDate = `${day}-${month}-${year}`;
+    const time = `${hours}:${minutes}`;
+
+    return { timeDate, time };
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!startDate || isNaN(pages) || !activeBook) {
+      alert('Please enter valid data and choose a training plan');
+      return;
+    }
+    const resultObj = {
+      date: formatDate(startDate),
+      result: parseInt(pages),
+      id: activeBook,
+    };
+
+    dispatch(addTraining(resultObj));
+
     const form = e.target;
-    dispatch(updatePlanning(pages));
     form.reset();
-    console.log('done');
   }
+
   return (
     <div className={style.container}>
       <h3 className={style.title}>RESULT</h3>
@@ -53,13 +72,17 @@ function Result() {
           placeholderText="Start Date"
           showTimeSelect
           timeFormat="HH:mm"
+          autoComplete="off"
           required
         />
         <input
-          type="number"
+          type="numeric"
+          pattern="[0-9]*"
           name="pages"
-          onChange={pagesChange}
+          autoComplete="off"
+          onChange={e => pagesChange(e.target.value)}
           className={style.page}
+          required
         />
         <button type="submit" className={style.btn}>
           Add result
@@ -69,9 +92,9 @@ function Result() {
         <h3 className={style.title}>STATISTICS</h3>
         {list.map(item => {
           return (
-            <li key={item.day} className={style.item}>
-              <p className={style.day}>{item.day}</p>
-              <p className={style.time}>{item.time}</p>
+            <li key={item.date} className={style.item}>
+              <p className={style.day}>{dateSeparator(item.date).timeDate}</p>
+              <p className={style.time}>{dateSeparator(item.date).time}</p>
               <p className={style.result}>
                 {item.result}
                 <span className={style.tip}> pages</span>

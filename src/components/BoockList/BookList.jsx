@@ -1,13 +1,13 @@
 import React from 'react';
-import style from './BoockList.module.css';
-import BoockSvg from 'layuot/svg/boockSvg';
+import style from './BookList.module.css';
+import BookSvg from 'layuot/svg/bookSvg';
 import { useDispatch, useSelector } from 'react-redux';
 import { setModalOn } from 'redux/user/slice';
 import DeleteSvg from 'layuot/svg/deleteSvg';
 import { deleteBook } from 'redux/library/operations';
-import { deleteBookReload, setId } from 'redux/library/slice';
+import { deleteBookReload, setActiveBook, setId } from 'redux/library/slice';
 
-function BoockList({ state, option, category }) {
+function BookList({ state, option, category }) {
   const dispatch = useDispatch();
   const liba = useSelector(state => state.liba.liba);
   const arr = liba.filter(item => item.state === state);
@@ -22,47 +22,57 @@ function BoockList({ state, option, category }) {
     dispatch(deleteBookReload(id));
   }
 
+  function handleChooseBook(book) {
+    if (book.state === 'reading') {
+      dispatch(setActiveBook(book._id));
+    }
+  }
   const transparentBg = option
     ? { backgroundColor: 'transparent', boxShadow: 'none' }
     : { backgroundColor: '#fff' };
   return (
     <ul className={style.list}>
-      {arr.map(boock => {
+      {arr.map(book => {
         return (
-          <li className={style.card} style={transparentBg} key={boock._id}>
+          <li
+            className={style.card}
+            style={transparentBg}
+            key={book._id}
+            onClick={() => handleChooseBook(book)}
+          >
             <div className={style.btnBox}>
-              <BoockSvg />
+              <BookSvg />
               <button
                 className={style.deleteBtn}
                 type="button"
-                onClick={() => handleDelete(boock._id)}
+                onClick={() => handleDelete(book._id)}
               >
                 <DeleteSvg />
               </button>
             </div>
             <div className={style.tumb}>
-              <p className={style.boockText}>{boock.title}</p>
-              <p className={style.boockText}>
+              <p className={style.bookText}>{book.title}</p>
+              <p className={style.bookText}>
                 <span className={style.tip}>Author: </span>
-                {boock.author}
+                {book.author}
               </p>
-              <p className={style.boockText}>
+              <p className={style.bookText}>
                 <span className={style.tip}>Year: </span>
-                {boock.year}
+                {book.year}
               </p>
-              <p className={style.boockText}>
+              <p className={style.bookText}>
                 <span className={style.tip}>Pages: </span>
-                {boock.pagesRead || 0} / {boock.pages}
+                {book.pagesRead || 0} / {book.pages}
               </p>
-              {boock.rating && (
-                <p className={style.boockText}>
+              {book.rating && (
+                <p className={style.bookText}>
                   <span className={style.tip}>Raiting: </span>
-                  {boock.rating}
+                  {book.rating}
                 </p>
               )}
               {category && (
                 <button
-                  onClick={() => handleResume(boock._id)}
+                  onClick={() => handleResume(book._id)}
                   type="button"
                   className={style.resume}
                 >
@@ -76,4 +86,4 @@ function BoockList({ state, option, category }) {
     </ul>
   );
 }
-export default BoockList;
+export default BookList;

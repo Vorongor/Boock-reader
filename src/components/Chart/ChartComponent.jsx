@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Chart from './Chart';
+
 function ChartComponent() {
   const data = useSelector(state => state.modal.planingData);
+  console.log('🚀 ~ file: ChartComponent.jsx:8 ~ ChartComponent ~ data:', data);
   const planData = [];
   const realData = [];
   const labels = [];
@@ -46,7 +48,7 @@ function ChartComponent() {
   planMaking();
   return (
     <div style={{ width: '100%', height: '340px' }}>
-      <Chart data={chartData} />
+      <Chart />
     </div>
   );
 }

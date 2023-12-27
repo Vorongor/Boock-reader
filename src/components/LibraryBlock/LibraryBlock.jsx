@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Resume from 'components/Resume/Resume';
 import { useDispatch, useSelector } from 'react-redux';
 import NewBoock from 'components/NewBook/NewBook';
-import BoockList from 'components/BoockList/BoockList';
+import BoockList from 'components/BoockList/BookList';
 import { fetchLibrary } from 'redux/library/operations';
 
 function LibraryBlock() {

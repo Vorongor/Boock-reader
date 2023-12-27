@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './StatistickBlock.module.css';
 import { useSelector } from 'react-redux';
-import BoockList from 'components/BoockList/BoockList';
+import BoockList from 'components/BoockList/BookList';
 import { Link } from 'react-router-dom';
 import NewTraining from 'components/NewTraining/NewTraining';
 

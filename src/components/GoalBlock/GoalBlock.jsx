@@ -7,7 +7,6 @@ function GoalBlock() {
   const booksLeft = amountOfBooks.filter(item => item.state === 'reading');
 
   const [daysCount, setDaysCount] = useState(null);
-  console.log('🚀 ~ file: GoalBlock.jsx:9 ~ GoalBlock ~ daysCount:', daysCount);
 
   useEffect(() => {
     const startDate = new Date(startDay);

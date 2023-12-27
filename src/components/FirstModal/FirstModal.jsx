@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './FirstModal.module.css';
-import BoockSvg from 'layuot/svg/boockSvg';
+import BoockSvg from 'layuot/svg/bookSvg';
 import VectorSvg from 'layuot/svg/VectorSvg';
 import { useDispatch } from 'react-redux';
 import { setUsualIn } from 'redux/user/slice';

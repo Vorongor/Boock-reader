@@ -3,7 +3,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import style from './header.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogOut } from 'redux/auth/slice';
-import BoockSvg from './svg/boockSvg';
+import BoockSvg from './svg/bookSvg';
 import HomeSvg from './svg/homeSvg';
 import { logOut } from 'redux/auth/operations';
 

@@ -8,26 +8,26 @@ import { addBook } from 'redux/library/operations';
 function NewBook() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [book, setBook] = useState({
-    title: '',
-    author: '',
-    publishYear: '',
-    pagesTotal: '',
-  });
+  const [book, setBook] = useState({});
 
   function handleInputChange(e) {
     e.preventDefault();
     const { name, value } = e.target;
     setBook({
       ...book,
-      [name]: `${value}`,
+      [name]: value,
     });
   }
   function handleAddBook(e) {
     e.preventDefault();
     const form = e.target;
-    dispatch(addBook(book));
-    console.log('🚀 ~ file: NewBook.jsx:30 ~ handleAddBook ~ book:', book);
+    const newBook = {
+      title: book.title,
+      author: book.author,
+      pages: parseInt(book.pages),
+      year: parseInt(book.year),
+    };
+    dispatch(addBook(newBook));
     form.reset();
     navigate('/library');
   }
@@ -67,7 +67,7 @@ function NewBook() {
           Publication date
           <input
             className={style.inputYear}
-            type="text"
+            type="number"
             id="addYear"
             placeholder="..."
             name="year"
@@ -79,7 +79,7 @@ function NewBook() {
           Amount of pages
           <input
             className={style.inputPages}
-            type="text"
+            type="number"
             id="addPages"
             placeholder="..."
             name="pages"

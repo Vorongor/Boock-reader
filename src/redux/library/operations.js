@@ -100,3 +100,63 @@ export const addReview = createAsyncThunk(
     }
   }
 );
+
+export const addPlanning = createAsyncThunk(
+  '/planning',
+  async (plan, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.accessToken;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user info');
+    }
+    try {
+      const curentHeaders = setAuthHeader(persistedToken);
+
+      const response = await axios.post(
+        `/books/plan/${plan.id}`,
+        { startTime: plan.startTime, finishTime: plan.finishTime },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            ...curentHeaders,
+          },
+        }
+      );
+      console.log('🚀 ~ file: operations.js:118 ~ response:', response);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const addTraining = createAsyncThunk(
+  '/training',
+  async (obj, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.accessToken;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user info');
+    }
+    try {
+      const curentHeaders = setAuthHeader(persistedToken);
+      console.log(obj);
+      const response = await axios.post(
+        `/books/training/${obj.id}`,
+        { date: obj.date, result: obj.result },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            ...curentHeaders,
+          },
+        }
+      );
+      console.log('🚀 ~ file: operations.js:118 ~ response:', response);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

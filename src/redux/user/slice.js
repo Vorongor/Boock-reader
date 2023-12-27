@@ -6,6 +6,7 @@ const initialState = {
   showModal: false,
   firstIn: true,
   startDay: false,
+  currentPlan: null,
 };
 
 const modalSlice = createSlice({
@@ -24,13 +25,25 @@ const modalSlice = createSlice({
     setFirstIn: state => {
       state.firstIn = true;
     },
+    setCurrentPlan: (state, action) => {
+      state.currentPlan = action.payload;
+    },
+    unSetCurrentPlan: state => {
+      state.currentPlan = null;
+    },
   },
   extraReducers: builder => {
     builder.addCase(fetchPlanning.fulfilled, (state, action) => {
-      state.planingData = action.payload;
+      state.planingData = action.payload.data;
     });
   },
 });
-export const { setModalOn, setModalOff, setUsualIn, setFirstIn } =
-  modalSlice.actions;
+export const {
+  setModalOn,
+  setModalOff,
+  setUsualIn,
+  setFirstIn,
+  setCurrentPlan,
+  unSetCurrentPlan,
+} = modalSlice.actions;
 export const modalReducer = modalSlice.reducer;

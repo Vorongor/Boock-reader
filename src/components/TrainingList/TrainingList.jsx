@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './TrainingList.module.css';
 import NewTraining from 'components/NewTraining/NewTraining';
-import BoockList from 'components/BoockList/BoockList';
+import BoockList from 'components/BoockList/BookList';
 
 function TrainingList() {
   const [isTrainingContinue, setTrainingCondition] = useState(false);

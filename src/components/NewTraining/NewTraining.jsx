@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import DropDownSvg from 'layuot/svg/DropDownSvg';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPlanning } from 'redux/user/operations';
+import { addPlanning } from 'redux/library/operations';
 
 function NewTraining() {
   const dispatch = useDispatch();
@@ -44,9 +44,9 @@ function NewTraining() {
       const newTraining = {
         startTime: formatDate(startDate),
         finishTime: formatDate(finishDate),
-        bookID: findBookDataByTitle(selectedBook)._id,
+        id: findBookDataByTitle(selectedBook)._id,
       };
-      console.log(newTraining);
+
       dispatch(addPlanning(newTraining));
       form.reset();
     } else {
@@ -75,6 +75,7 @@ function NewTraining() {
             id="startTr"
             name="dataStart"
             placeholderText="Start Date"
+            autoComplete="off"
             required
           />
           <span className={style.drop}>
@@ -94,6 +95,7 @@ function NewTraining() {
             id="finishTr"
             name="dataFinish"
             placeholderText="Finish Date"
+            autoComplete="off"
             required
           />
           <span className={style.drop}>
