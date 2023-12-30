@@ -93,7 +93,7 @@
     flex: 2;
   }
   .resume {
-    transform: translateX(-100px);
+    transform: translateX(-30px);
   }
   .tip {
     display: none;

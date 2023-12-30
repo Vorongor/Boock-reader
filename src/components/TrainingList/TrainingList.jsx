@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './TrainingList.module.css';
 import NewTraining from 'components/NewTraining/NewTraining';
 import BoockList from 'components/BoockList/BookList';
+import CountDown from 'components/CountDown/CountDown';
 
 function TrainingList() {
   const [isTrainingContinue, setTrainingCondition] = useState(false);
@@ -19,7 +20,7 @@ function TrainingList() {
   return (
     <section className={style.container}>
       <div className={style.addTraining}>
-        <NewTraining />
+        {!isTrainingContinue ? <NewTraining /> : <CountDown />}
       </div>
       <div className={style.box}>
         <BoockList state={'reading'} option={true} />

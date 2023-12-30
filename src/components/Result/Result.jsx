@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './Result.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPlanning, addTraining } from 'redux/library/operations';
+import { addTraining } from 'redux/library/operations';
 
 function Result() {
   const dispatch = useDispatch();
@@ -23,7 +23,6 @@ function Result() {
   const activeBook = useSelector(state => state.liba.activeBook);
 
   const book = liba.find(item => item._id === activeBook);
-  const list = [];
 
   function dateSeparator(unixDate) {
     const date = new Date(unixDate * 1000);
@@ -65,7 +64,7 @@ function Result() {
         <DatePicker
           className={style.date}
           selected={startDate}
-          minDate={new Date()}
+          // minDate={}
           onChange={handleStartDateChange}
           dateFormat="yyyy-MM-dd HH:mm"
           name="dataStart"
@@ -88,21 +87,23 @@ function Result() {
           Add result
         </button>
       </form>
-      <ul className={style.list}>
-        <h3 className={style.title}>STATISTICS</h3>
-        {list.map(item => {
-          return (
-            <li key={item.date} className={style.item}>
-              <p className={style.day}>{dateSeparator(item.date).timeDate}</p>
-              <p className={style.time}>{dateSeparator(item.date).time}</p>
-              <p className={style.result}>
-                {item.result}
-                <span className={style.tip}> pages</span>
-              </p>
-            </li>
-          );
-        })}
-      </ul>
+      {book && (
+        <ul className={style.list}>
+          <h3 className={style.title}>STATISTICS</h3>
+          {book.training.map(item => {
+            return (
+              <li key={item.date} className={style.item}>
+                <p className={style.day}>{dateSeparator(item.date).timeDate}</p>
+                <p className={style.time}>{dateSeparator(item.date).time}</p>
+                <p className={style.result}>
+                  {item.result}
+                  <span className={style.tip}> pages</span>
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }

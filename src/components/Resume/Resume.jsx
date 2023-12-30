@@ -4,19 +4,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setModalOff } from 'redux/user/slice';
 import { addReview } from 'redux/library/operations';
 import { setId } from 'redux/library/slice';
+import { Rating } from 'react-simple-star-rating';
 
 function Resume() {
   const dispatch = useDispatch();
   const currentId = useSelector(state => state.liba.currentId);
-  const [rating, setRating] = useState(1);
-  const [feedback, setFeedBack] = useState('');
+  const liba = useSelector(state => state.liba.liba);
+  const book = liba.find(item => item._id === currentId);
 
-  const handleRatingChange = e => {
-    const newRating = parseInt(e.target.value, 10);
-    if (!isNaN(newRating) && newRating >= 1 && newRating <= 5) {
-      setRating(newRating);
-    }
+  const [feedback, setFeedBack] = useState(book.review.comment || '');
+  const [rating, setRating] = useState(book.review.rate || 0);
+
+  const handleRating = rate => {
+    setRating(rate);
+    console.log(rate);
   };
+
   function handleFeedbackChange(e) {
     setFeedBack(e.target.value);
   }
@@ -45,8 +48,9 @@ function Resume() {
     const feedbackData = {
       rating: rating,
       feedback: feedback,
+      id: currentId,
     };
-    dispatch(addReview(currentId, feedbackData));
+    dispatch(addReview(feedbackData));
     dispatch(setId(null));
     dispatch(setModalOff());
     form.reset();
@@ -56,19 +60,12 @@ function Resume() {
     <div className={style.resumeBack}>
       <div className={style.block}>
         <form action="submit" className={style.form} onSubmit={handleSubmit}>
-          <label className={style.label} htmlFor="ratingResume">
-            Choose rating of the book
-            <input
-              type="range"
-              id="ratingResume"
-              name="ratingResume"
-              min="1"
-              max="5"
-              value={rating}
-              onChange={handleRatingChange}
-              className={style.ratingInput}
-            />
-          </label>
+          <div className={style.ratingContainer}>
+            <p className={style.ratingLabel}>Choose rating of the book:</p>
+            <div className={style.starRating}>
+              <Rating onClick={handleRating} />
+            </div>
+          </div>
           <label className={style.label} htmlFor="textarea">
             Resume
             <textarea
@@ -77,6 +74,7 @@ function Resume() {
               placeholder="..."
               className={style.textarea}
               onChange={handleFeedbackChange}
+              value={feedback}
             ></textarea>
           </label>
           <div>

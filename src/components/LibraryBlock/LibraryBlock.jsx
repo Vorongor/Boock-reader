@@ -3,13 +3,11 @@ import style from './LibraryBlock.module.css';
 import CircleSvg from 'layuot/svg/moreSvg';
 import { Link } from 'react-router-dom';
 import Resume from 'components/Resume/Resume';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import NewBoock from 'components/NewBook/NewBook';
 import BoockList from 'components/BoockList/BookList';
-import { fetchLibrary } from 'redux/library/operations';
 
 function LibraryBlock() {
-  const dispatch = useDispatch();
   const showModal = useSelector(state => state.modal.showModal);
   const [library, setLibrary] = useState(false);
   const liba = useSelector(state => state.liba.liba);
@@ -22,7 +20,7 @@ function LibraryBlock() {
     if (goingToRead || currentlyReading || finishedReading) {
       setLibrary(true);
     }
-  });
+  }, [goingToRead, currentlyReading, finishedReading]);
 
   return (
     <div>

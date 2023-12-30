@@ -77,7 +77,7 @@ export const deleteBook = createAsyncThunk(
 );
 export const addReview = createAsyncThunk(
   '/book/addReview',
-  async (bookId, feedback, thunkAPI) => {
+  async (feedback, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.accessToken;
 
@@ -86,13 +86,17 @@ export const addReview = createAsyncThunk(
     }
     try {
       const curentHeaders = setAuthHeader(persistedToken);
-      const jsonData = JSON.stringify(feedback);
-      const response = await axios.patch(`/book/review/${bookId}`, jsonData, {
-        headers: {
-          'Content-Type': 'application/json',
-          ...curentHeaders,
-        },
-      });
+
+      const response = await axios.patch(
+        `/books/review/${feedback.id}`,
+        { rate: feedback.rating, comment: feedback.feedback },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            ...curentHeaders,
+          },
+        }
+      );
       console.log('🚀 ~ file: operations.js:92 ~ response:', response);
       return response.data;
     } catch (e) {

@@ -31,6 +31,9 @@ const librarySlice = createSlice({
     setActiveBook: (state, action) => {
       state.activeBook = action.payload;
     },
+    rejectActiveBook: state => {
+      state.activeBook = null;
+    },
   },
   extraReducers: builder => {
     builder
@@ -47,5 +50,6 @@ const librarySlice = createSlice({
       });
   },
 });
-export const { deleteBookReload, setId, setActiveBook } = librarySlice.actions;
+export const { deleteBookReload, setId, setActiveBook, rejectActiveBook } =
+  librarySlice.actions;
 export const listlReducer = librarySlice.reducer;

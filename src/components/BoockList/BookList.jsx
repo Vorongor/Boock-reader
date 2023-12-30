@@ -5,7 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setModalOn } from 'redux/user/slice';
 import DeleteSvg from 'layuot/svg/deleteSvg';
 import { deleteBook } from 'redux/library/operations';
-import { deleteBookReload, setActiveBook, setId } from 'redux/library/slice';
+import {
+  deleteBookReload,
+  rejectActiveBook,
+  setActiveBook,
+  setId,
+} from 'redux/library/slice';
+import RatingStars from 'layuot/RatingStars';
 
 function BookList({ state, option, category }) {
   const dispatch = useDispatch();
@@ -20,6 +26,7 @@ function BookList({ state, option, category }) {
   function handleDelete(id) {
     dispatch(deleteBook(id));
     dispatch(deleteBookReload(id));
+    dispatch(rejectActiveBook());
   }
 
   function handleChooseBook(book) {
@@ -64,12 +71,13 @@ function BookList({ state, option, category }) {
                 <span className={style.tip}>Pages: </span>
                 {book.pagesRead || 0} / {book.pages}
               </p>
-              {book.rating && (
-                <p className={style.bookText}>
-                  <span className={style.tip}>Raiting: </span>
-                  {book.rating}
-                </p>
+              {book.review && (
+                <div className={style.bookText}>
+                  <span className={style.tip}>Rating: </span>
+                  <RatingStars rating={book.review.rate} />
+                </div>
               )}
+              {}
               {category && (
                 <button
                   onClick={() => handleResume(book._id)}
