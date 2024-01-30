@@ -12,11 +12,16 @@ function Resume() {
   const liba = useSelector(state => state.liba.liba);
   const book = liba.find(item => item._id === currentId);
 
-  const defaultFeedback = book?.review?.comment || '';
-  const defaultRating = book?.review?.rate || 0;
+  const [feedback, setFeedBack] = useState('');
+  const [rating, setRating] = useState(0);
 
-  const [feedback, setFeedBack] = useState(defaultFeedback);
-  const [rating, setRating] = useState(defaultRating);
+  useEffect(() => {
+    // Set default values if book.review is available
+    if (book && book.review) {
+      setFeedBack(book.review.comment || '');
+      setRating(book.review.rate || 0);
+    }
+  }, [book]);
 
   const handleRating = rate => {
     setRating(rate);
