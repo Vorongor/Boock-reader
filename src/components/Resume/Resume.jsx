@@ -12,8 +12,11 @@ function Resume() {
   const liba = useSelector(state => state.liba.liba);
   const book = liba.find(item => item._id === currentId);
 
-  const [feedback, setFeedBack] = useState(book.review.comment || '');
-  const [rating, setRating] = useState(book.review.rate || 0);
+  const defaultFeedback = book?.review?.comment || '';
+  const defaultRating = book?.review?.rate || 0;
+
+  const [feedback, setFeedBack] = useState(defaultFeedback);
+  const [rating, setRating] = useState(defaultRating);
 
   const handleRating = rate => {
     setRating(rate);
